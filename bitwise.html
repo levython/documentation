@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitwise Operations | Levython Documentation</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="sidebar-overlay"></div>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="logo.png" alt="Levython" class="sidebar-logo-img">
+                <span>Levython</span>
+            </a>
+            <div class="sidebar-version">v1.0.0 Documentation</div>
+        </div>
+
+        <div class="sidebar-search">
+            <input type="text" placeholder="Search docs..." aria-label="Search documentation">
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">Introduction</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Index</a></li>
+                    <li><a href="about.html">About this documentation</a></li>
+                    <li><a href="synopsis.html">Usage and examples</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Getting Started</div>
+                <ul class="nav-links">
+                    <li><a href="installation.html">Installation</a></li>
+                    <li><a href="quickstart.html">Quick Start</a></li>
+                    <li><a href="vscode.html">VS Code Extension</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Language Reference</div>
+                <ul class="nav-links">
+                    <li><a href="variables.html">Variables</a></li>
+                    <li><a href="functions.html">Functions</a></li>
+                    <li><a href="control-flow.html">Control Flow</a></li>
+                    <li><a href="loops.html">Loops</a></li>
+                    <li><a href="lists.html">Lists</a></li>
+                    <li><a href="strings.html">Strings</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Core Modules</div>
+                <ul class="nav-links">
+                    <li><a href="io.html">I/O</a></li>
+                    <li><a href="file.html">File System</a></li>
+                    <li><a href="memory.html">Memory</a></li>
+                    <li><a href="bitwise.html" class="active">Bitwise</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Advanced</div>
+                <ul class="nav-links">
+                    <li><a href="performance.html">Performance</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Tools</div>
+                <ul class="nav-links">
+                    <li><a href="cli.html">Command Line</a></li>
+                    <li><a href="lpm.html">Package Manager</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+    <div class="layout">
+        <main class="main">
+            <div class="content">
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span>Bitwise Operations</span>
+                </div>
+
+                <h1>Bitwise Operations</h1>
+                <p>Levython provides low-level bitwise operations for efficient bit manipulation and system programming.</p>
+
+                <h2>Bitwise Operators</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Operator</th>
+                            <th>Name</th>
+                            <th>Example</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&amp;</code></td>
+                            <td>AND</td>
+                            <td><code>12 &amp; 10</code></td>
+                            <td><code>8</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>|</code></td>
+                            <td>OR</td>
+                            <td><code>12 | 10</code></td>
+                            <td><code>14</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>^</code></td>
+                            <td>XOR</td>
+                            <td><code>12 ^ 10</code></td>
+                            <td><code>6</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>~</code></td>
+                            <td>NOT</td>
+                            <td><code>~12</code></td>
+                            <td><code>-13</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;&lt;</code></td>
+                            <td>Left shift</td>
+                            <td><code>5 &lt;&lt; 2</code></td>
+                            <td><code>20</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&gt;&gt;</code></td>
+                            <td>Right shift</td>
+                            <td><code>20 &gt;&gt; 2</code></td>
+                            <td><code>5</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Basic Examples</h2>
+
+                <h3>AND Operation</h3>
+                <div class="code-block">
+                    <pre><code># Bitwise AND
+# 12 = 1100
+# 10 = 1010
+#      ----
+#      1000 = 8
+result <- 12 & 10
+say(result)  # Output: 8
+
+# Check if bit is set
+flags <- 0b1101  # Binary literal
+if (flags & 0b0100) != 0 then
+    say("Bit 2 is set")
+end</code></pre>
+                </div>
+
+                <h3>OR Operation</h3>
+                <div class="code-block">
+                    <pre><code># Bitwise OR
+# 12 = 1100
+# 10 = 1010
+#      ----
+#      1110 = 14
+result <- 12 | 10
+say(result)  # Output: 14
+
+# Set a bit
+flags <- 0b1001
+flags <- flags | 0b0100  # Set bit 2
+say(flags)  # Output: 13 (0b1101)</code></pre>
+                </div>
+
+                <h3>XOR Operation</h3>
+                <div class="code-block">
+                    <pre><code># Bitwise XOR
+# 12 = 1100
+# 10 = 1010
+#      ----
+#      0110 = 6
+result <- 12 ^ 10
+say(result)  # Output: 6
+
+# Toggle a bit
+flags <- 0b1101
+flags <- flags ^ 0b0100  # Toggle bit 2
+say(flags)  # Output: 9 (0b1001)</code></pre>
+                </div>
+
+                <h3>NOT Operation</h3>
+                <div class="code-block">
+                    <pre><code># Bitwise NOT (complement)
+result <- ~12
+say(result)  # Output: -13
+
+# Explanation: ~12 flips all bits
+# 12 = 00001100 → 11110011 = -13 (two's complement)</code></pre>
+                </div>
+
+                <h3>Shift Operations</h3>
+                <div class="code-block">
+                    <pre><code># Left shift (multiply by 2^n)
+result <- 5 << 2  # 5 * 2^2 = 20
+say(result)  # Output: 20
+
+# Right shift (divide by 2^n)
+result <- 20 >> 2  # 20 / 2^2 = 5
+say(result)  # Output: 5
+
+# Efficient power of 2 multiplication
+x <- 7
+x2 <- x << 1   # x * 2 = 14
+x4 <- x << 2   # x * 4 = 28
+x8 <- x << 3   # x * 8 = 56</code></pre>
+                </div>
+
+                <h2>Common Patterns</h2>
+
+                <h3>Bit Masking</h3>
+                <div class="code-block">
+                    <pre><code># Extract specific bits
+value <- 0b11010110
+mask <- 0b00001111
+
+lower_bits <- value & mask
+say(lower_bits)  # Output: 6 (0b0110)
+
+# Extract bytes from integer
+num <- 0x12345678
+byte0 <- num & 0xFF          # 0x78
+byte1 <- (num >> 8) & 0xFF   # 0x56
+byte2 <- (num >> 16) & 0xFF  # 0x34
+byte3 <- (num >> 24) & 0xFF  # 0x12</code></pre>
+                </div>
+
+                <h3>Set/Clear/Toggle Bits</h3>
+                <div class="code-block">
+                    <pre><code># Set bit at position n
+fun set_bit(value, n)
+    return value | (1 << n)
+end
+
+# Clear bit at position n
+fun clear_bit(value, n)
+    return value & ~(1 << n)
+end
+
+# Toggle bit at position n
+fun toggle_bit(value, n)
+    return value ^ (1 << n)
+end
+
+# Check if bit n is set
+fun is_bit_set(value, n)
+    return (value & (1 << n)) != 0
+end
+
+# Example usage
+flags <- 0
+flags <- set_bit(flags, 2)    # Set bit 2
+flags <- set_bit(flags, 5)    # Set bit 5
+say(flags)                     # Output: 36 (0b100100)
+
+flags <- clear_bit(flags, 2)  # Clear bit 2
+say(flags)                     # Output: 32 (0b100000)</code></pre>
+                </div>
+
+                <h3>Swap Without Temporary</h3>
+                <div class="code-block">
+                    <pre><code># XOR swap trick
+a <- 10
+b <- 20
+
+say("Before: a=" + str(a) + ", b=" + str(b))
+
+a <- a ^ b
+b <- a ^ b
+a <- a ^ b
+
+say("After: a=" + str(a) + ", b=" + str(b))
+# Output: a=20, b=10</code></pre>
+                </div>
+
+                <h3>Count Set Bits</h3>
+                <div class="code-block">
+                    <pre><code># Count number of 1 bits (population count)
+fun popcount(n)
+    count <- 0
+    while n > 0 do
+        count <- count + (n & 1)
+        n <- n >> 1
+    end
+    return count
+end
+
+say(popcount(0b1011))  # Output: 3
+say(popcount(15))      # Output: 4 (0b1111)</code></pre>
+                </div>
+
+                <h3>Check Power of Two</h3>
+                <div class="code-block">
+                    <pre><code># Check if number is power of 2
+fun is_power_of_two(n)
+    return n > 0 and (n & (n - 1)) == 0
+end
+
+say(is_power_of_two(16))  # true
+say(is_power_of_two(15))  # false
+say(is_power_of_two(32))  # true</code></pre>
+                </div>
+
+                <h2>Practical Applications</h2>
+
+                <h3>Flags and Permissions</h3>
+                <div class="code-block">
+                    <pre><code># Define permission flags
+READ <- 1    # 0b001
+WRITE <- 2   # 0b010
+EXEC <- 4    # 0b100
+
+# Grant permissions
+perms <- READ | WRITE  # 0b011
+
+# Check permission
+if (perms & WRITE) != 0 then
+    say("Write permission granted")
+end
+
+# Add permission
+perms <- perms | EXEC  # Now 0b111
+
+# Remove permission
+perms <- perms & ~WRITE  # Remove write</code></pre>
+                </div>
+
+                <h3>Color Manipulation</h3>
+                <div class="code-block">
+                    <pre><code># RGB color as 24-bit integer (0xRRGGBB)
+fun make_color(r, g, b)
+    return (r << 16) | (g << 8) | b
+end
+
+fun get_red(color)
+    return (color >> 16) & 0xFF
+end
+
+fun get_green(color)
+    return (color >> 8) & 0xFF
+end
+
+fun get_blue(color)
+    return color & 0xFF
+end
+
+# Create color
+purple <- make_color(128, 0, 128)
+say("Red: " + str(get_red(purple)))      # 128
+say("Green: " + str(get_green(purple)))  # 0
+say("Blue: " + str(get_blue(purple)))    # 128</code></pre>
+                </div>
+
+                <h3>Bit Packing</h3>
+                <div class="code-block">
+                    <pre><code># Pack multiple values into single integer
+fun pack(a, b, c, d)
+    # Pack 4 bytes into 32-bit integer
+    return (a << 24) | (b << 16) | (c << 8) | d
+end
+
+fun unpack(value)
+    a <- (value >> 24) & 0xFF
+    b <- (value >> 16) & 0xFF
+    c <- (value >> 8) & 0xFF
+    d <- value & 0xFF
+    return [a, b, c, d]
+end
+
+# Usage
+packed <- pack(10, 20, 30, 40)
+values <- unpack(packed)
+say(values)  # [10, 20, 30, 40]</code></pre>
+                </div>
+
+                <h2>Performance Tips</h2>
+                <ul>
+                    <li>Bitwise operations are extremely fast (single CPU cycle)</li>
+                    <li>Use shifts instead of multiply/divide by powers of 2</li>
+                    <li>Bit masks are faster than multiple boolean checks</li>
+                    <li>Pack related flags into single integer instead of separate booleans</li>
+                    <li>Bitwise AND with power of 2 minus 1 is fast modulo: <code>n & (2^k - 1)</code></li>
+                </ul>
+
+                <h2>Reference Table</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Operation</th>
+                            <th>Formula</th>
+                            <th>Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Set bit n</td>
+                            <td><code>x | (1 &lt;&lt; n)</code></td>
+                            <td>Turn bit on</td>
+                        </tr>
+                        <tr>
+                            <td>Clear bit n</td>
+                            <td><code>x &amp; ~(1 &lt;&lt; n)</code></td>
+                            <td>Turn bit off</td>
+                        </tr>
+                        <tr>
+                            <td>Toggle bit n</td>
+                            <td><code>x ^ (1 &lt;&lt; n)</code></td>
+                            <td>Flip bit</td>
+                        </tr>
+                        <tr>
+                            <td>Test bit n</td>
+                            <td><code>(x &amp; (1 &lt;&lt; n)) != 0</code></td>
+                            <td>Check if set</td>
+                        </tr>
+                        <tr>
+                            <td>Power of 2?</td>
+                            <td><code>(x &amp; (x-1)) == 0</code></td>
+                            <td>Validation</td>
+                        </tr>
+                        <tr>
+                            <td>Multiply by 2^n</td>
+                            <td><code>x &lt;&lt; n</code></td>
+                            <td>Fast multiply</td>
+                        </tr>
+                        <tr>
+                            <td>Divide by 2^n</td>
+                            <td><code>x &gt;&gt; n</code></td>
+                            <td>Fast divide</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <footer class="footer">
+                    <p>© 2024 Levython. Released under the MIT License.</p>
+                    <p><a href="https://github.com/Levython/Levython">GitHub</a> · <a href="about.html">About</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input/Output | Levython Documentation</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="sidebar-overlay"></div>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="logo.png" alt="Levython" class="sidebar-logo-img">
+                <span>Levython</span>
+            </a>
+            <div class="sidebar-version">v1.0.0 Documentation</div>
+        </div>
+
+        <div class="sidebar-search">
+            <input type="text" placeholder="Search docs..." aria-label="Search documentation">
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">Introduction</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Index</a></li>
+                    <li><a href="about.html">About this documentation</a></li>
+                    <li><a href="synopsis.html">Usage and examples</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Getting Started</div>
+                <ul class="nav-links">
+                    <li><a href="installation.html">Installation</a></li>
+                    <li><a href="quickstart.html">Quick Start</a></li>
+                    <li><a href="vscode.html">VS Code Extension</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Language Reference</div>
+                <ul class="nav-links">
+                    <li><a href="variables.html">Variables</a></li>
+                    <li><a href="functions.html">Functions</a></li>
+                    <li><a href="control-flow.html">Control Flow</a></li>
+                    <li><a href="loops.html">Loops</a></li>
+                    <li><a href="lists.html">Lists</a></li>
+                    <li><a href="strings.html">Strings</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Core Modules</div>
+                <ul class="nav-links">
+                    <li><a href="io.html" class="active">I/O</a></li>
+                    <li><a href="file.html">File System</a></li>
+                    <li><a href="memory.html">Memory</a></li>
+                    <li><a href="bitwise.html">Bitwise</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Advanced</div>
+                <ul class="nav-links">
+                    <li><a href="performance.html">Performance</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Tools</div>
+                <ul class="nav-links">
+                    <li><a href="cli.html">Command Line</a></li>
+                    <li><a href="lpm.html">Package Manager</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+    <div class="layout">
+        <main class="main">
+            <div class="content">
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span>Input/Output</span>
+                </div>
+
+                <h1>Input/Output Operations</h1>
+                <p>Levython provides simple, efficient I/O functions for console interaction and user input handling.</p>
+
+                <h2>Output Functions</h2>
+                <p>Multiple functions available for printing output to the console:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Function</th>
+                            <th>Description</th>
+                            <th>Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>say(value)</code></td>
+                            <td>Print value with newline (recommended)</td>
+                            <td><code>say("Hello!")</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>print(value)</code></td>
+                            <td>Print without newline</td>
+                            <td><code>print("Loading...")</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>println(value)</code></td>
+                            <td>Print value with newline (alias)</td>
+                            <td><code>println("Done")</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Print Examples</h3>
+                <div class="code-block">
+                    <pre><code># Basic output
+say("Hello, World!")
+
+# Print without newline
+print("Loading")
+print("...")
+say("Done")  # Output: Loading...Done
+
+# Multiple values with concatenation
+name <- "Alice"
+age <- 25
+say("Name: " + name + ", Age: " + str(age))</code></pre>
+                </div>
+
+                <h2>Input Functions</h2>
+                <p>The <code>ask()</code> function reads user input from the console:</p>
+
+                <h3>Basic Input</h3>
+                <div class="code-block">
+                    <pre><code># Get string input
+name <- ask("What is your name? ")
+say("Hello, " + name + "!")
+
+# Get number input
+age_str <- ask("Enter your age: ")
+age <- int(age_str)
+say("You are " + str(age) + " years old")</code></pre>
+                </div>
+
+                <h3>Input Validation</h3>
+                <div class="code-block">
+                    <pre><code># Validate numeric input
+input <- ask("Enter a number: ")
+if len(input) > 0 then
+    num <- int(input)
+    say("You entered: " + str(num))
+else
+    say("Invalid input")
+end
+
+# Loop until valid input
+valid <- false
+while not valid do
+    answer <- ask("Type 'yes' or 'no': ")
+    if answer == "yes" or answer == "no" then
+        valid <- true
+        say("You chose: " + answer)
+    else
+        say("Invalid choice, try again")
+    end
+end</code></pre>
+                </div>
+
+                <h2>Common I/O Patterns</h2>
+
+                <h3>Interactive Menu</h3>
+                <div class="code-block">
+                    <pre><code>say("=== Main Menu ===")
+say("1. Start Game")
+say("2. Settings")
+say("3. Exit")
+say("==================")
+
+choice <- ask("Enter choice: ")
+
+if choice == "1" then
+    say("Starting game...")
+elif choice == "2" then
+    say("Opening settings...")
+elif choice == "3" then
+    say("Goodbye!")
+else
+    say("Invalid choice")
+end</code></pre>
+                </div>
+
+                <h3>Progress Indicators</h3>
+                <div class="code-block">
+                    <pre><code># Simple progress bar
+for i in range(0, 10) do
+    print("#")
+end
+say(" Complete!")
+
+# Percentage display
+total <- 100
+for i in range(0, total + 1, 10) do
+    say(str(i) + "% complete")
+end</code></pre>
+                </div>
+
+                <h3>Formatted Output</h3>
+                <div class="code-block">
+                    <pre><code># Table formatting
+say("Name         | Age | Score")
+say("-------------|-----|------")
+say("Alice        |  25 |   950")
+say("Bob          |  30 |   875")
+say("Charlie      |  28 |   920")
+
+# Number formatting
+price <- 1234.5
+say("Price: $" + str(price))
+
+# Right-align numbers
+scores <- [100, 95, 87, 92]
+for score in scores do
+    say("Score: " + str(score))
+end</code></pre>
+                </div>
+
+                <h2>Performance Notes</h2>
+                <ul>
+                    <li><code>say()</code> and <code>println()</code> are equivalent - both add newline</li>
+                    <li><code>print()</code> buffers output - call <code>say("")</code> to flush</li>
+                    <li>Input is always returned as string - use <code>int()</code> or <code>float()</code> to convert</li>
+                    <li>For large output, prefer batching strings before printing</li>
+                    <li><code>ask()</code> blocks execution until user presses Enter</li>
+                </ul>
+
+                <h2>Error Handling</h2>
+                <div class="code-block">
+                    <pre><code># Handle invalid conversions
+input <- ask("Enter number: ")
+if len(input) > 0 then
+    # Convert string to number
+    num <- int(input)
+    if num >= 0 then
+        say("Valid number: " + str(num))
+    end
+else
+    say("No input provided")
+end
+
+# Check for empty input
+response <- ask("Continue? (y/n): ")
+if len(response) == 0 then
+    say("Using default: yes")
+    response <- "y"
+end</code></pre>
+                </div>
+
+                <div class="section-nav">
+                    <a href="strings.html" class="section-nav-prev">← Strings</a>
+                    <a href="file.html" class="section-nav-next">File I/O →</a>
+                </div>
+
+                <footer class="footer">
+                    <p>© 2024 Levython. Released under the MIT License.</p>
+                    <p><a href="https://github.com/Levython/Levython">GitHub</a> · <a href="about.html">About</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

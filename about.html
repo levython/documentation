@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Levython Documentation">
+    <title>About | Levython v1.0 Documentation</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="logo.png" alt="Levython" class="sidebar-logo-img">
+                <span>Levython</span>
+            </a>
+            <div class="sidebar-version">v1.0.0 Documentation</div>
+        </div>
+
+        <div class="sidebar-search">
+            <input type="text" placeholder="Search docs..." aria-label="Search documentation">
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">Introduction</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Index</a></li>
+                    <li><a href="about.html" class="active">About this documentation</a></li>
+                    <li><a href="synopsis.html">Usage and examples</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Getting Started</div>
+                <ul class="nav-links">
+                    <li><a href="installation.html">Installation</a></li>
+                    <li><a href="quickstart.html">Quick Start</a></li>
+                    <li><a href="vscode.html">VS Code Extension</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Language Reference</div>
+                <ul class="nav-links">
+                    <li><a href="variables.html">Variables</a></li>
+                    <li><a href="functions.html">Functions</a></li>
+                    <li><a href="control-flow.html">Control Flow</a></li>
+                    <li><a href="loops.html">Loops</a></li>
+                    <li><a href="lists.html">Lists</a></li>
+                    <li><a href="strings.html">Strings</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Core Modules</div>
+                <ul class="nav-links">
+                    <li><a href="io.html">I/O</a></li>
+                    <li><a href="file.html">File System</a></li>
+                    <li><a href="memory.html">Memory</a></li>
+                    <li><a href="bitwise.html">Bitwise</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Advanced</div>
+                <ul class="nav-links">
+                    <li><a href="performance.html">Performance</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Tools</div>
+                <ul class="nav-links">
+                    <li><a href="cli.html">Command Line</a></li>
+                    <li><a href="lpm.html">Package Manager</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <div class="layout">
+        <main class="main">
+            <header class="header">
+                <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+                <nav class="header-nav">
+                    <div class="breadcrumb">
+                        <a href="index.html">Levython</a> /
+                        <span>About</span>
+                    </div>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+                    <a href="https://github.com/levython/Levython" class="github-link" target="_blank">GitHub</a>
+                </div>
+            </header>
+
+            <div class="content">
+                <h1>About this Documentation</h1>
+
+                <p>Welcome to the official Levython documentation. This guide provides comprehensive information about
+                    the Levython programming language, its syntax, built-in functions, and tools.</p>
+
+                <h2 id="structure">Documentation Structure<a href="#structure" class="anchor">#</a></h2>
+
+                <p>The documentation is organized into the following sections:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Section</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Introduction</strong></td>
+                            <td>Overview and getting started information</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Getting Started</strong></td>
+                            <td>Installation, quick start, and setup guides</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Language Reference</strong></td>
+                            <td>Core language syntax and constructs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Core Modules</strong></td>
+                            <td>Built-in functionality for I/O, files, memory</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Advanced</strong></td>
+                            <td>Performance, SIMD, tensor operations</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tools</strong></td>
+                            <td>CLI and package manager</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2 id="stability">Stability Indicators<a href="#stability" class="anchor">#</a></h2>
+
+                <p>Throughout the documentation, you'll see stability indicators:</p>
+
+                <div class="stability stability-2">
+                    <span class="stability-badge">Stable</span>
+                    <span>The API is production-ready and backwards compatible.</span>
+                </div>
+
+                <div class="stability stability-1">
+                    <span class="stability-badge">Experimental</span>
+                    <span>The API may change in future versions.</span>
+                </div>
+
+                <div class="stability stability-0">
+                    <span class="stability-badge">Deprecated</span>
+                    <span>The API is no longer recommended and may be removed.</span>
+                </div>
+
+                <h2 id="conventions">Code Conventions<a href="#conventions" class="anchor">#</a></h2>
+
+                <p>Code examples use the following conventions:</p>
+
+                <ul>
+                    <li><code>&lt;-</code> for variable assignment</li>
+                    <li><code>-></code> for function returns</li>
+                    <li><code>act</code> for function definitions</li>
+                    <li>Comments with <code>#</code></li>
+                </ul>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># This is a comment
+variable <- "value"
+
+act function_name(param) {
+    -> param * 2
+}</code></pre>
+                </div>
+
+                <h2 id="contributing">Contributing<a href="#contributing" class="anchor">#</a></h2>
+
+                <p>This documentation is open source and lives in the <a
+                        href="https://github.com/levython/Levython/tree/main/docs">docs/</a> directory of the main
+                    repository. Contributions, corrections, and improvements are welcome!</p>
+
+                <ul>
+                    <li><strong>Bug Reports:</strong> <a href="https://github.com/levython/Levython/issues">GitHub
+                            Issues</a></li>
+                    <li><strong>Pull Requests:</strong> <a href="https://github.com/levython/Levython/pulls">GitHub
+                            PRs</a></li>
+                    <li><strong>Discussions:</strong> <a href="https://github.com/levython/Levython/discussions">GitHub
+                            Discussions</a></li>
+                </ul>
+
+                <h2 id="license">License<a href="#license" class="anchor">#</a></h2>
+
+                <p>Levython is released under the <a href="https://github.com/levython/Levython/blob/main/LICENSE">MIT
+                        License</a>.</p>
+
+                <footer class="footer">
+                    <p><strong>Levython 1.0.0</strong> · <a href="https://github.com/levython/Levython">GitHub</a> · <a
+                            href="https://github.com/levython/Levython/blob/main/LICENSE">MIT License</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

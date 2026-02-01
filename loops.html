@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Levython Loops - For and while loops">
+    <title>Loops | Levython v1.0 Documentation</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="logo.png" alt="Levython" class="sidebar-logo-img">
+                <span>Levython</span>
+            </a>
+            <div class="sidebar-version">v1.0.0 Documentation</div>
+        </div>
+
+        <div class="sidebar-search">
+            <input type="text" placeholder="Search docs..." aria-label="Search documentation">
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">Introduction</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Index</a></li>
+                    <li><a href="about.html">About this documentation</a></li>
+                    <li><a href="synopsis.html">Usage and examples</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Getting Started</div>
+                <ul class="nav-links">
+                    <li><a href="installation.html">Installation</a></li>
+                    <li><a href="quickstart.html">Quick Start</a></li>
+                    <li><a href="vscode.html">VS Code Extension</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Language Reference</div>
+                <ul class="nav-links">
+                    <li><a href="variables.html">Variables</a></li>
+                    <li><a href="functions.html">Functions</a></li>
+                    <li><a href="control-flow.html">Control Flow</a></li>
+                    <li><a href="loops.html" class="active">Loops</a></li>
+                    <li><a href="lists.html">Lists</a></li>
+                    <li><a href="strings.html">Strings</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Core Modules</div>
+                <ul class="nav-links">
+                    <li><a href="io.html">I/O</a></li>
+                    <li><a href="file.html">File System</a></li>
+                    <li><a href="memory.html">Memory</a></li>
+                    <li><a href="bitwise.html">Bitwise</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Advanced</div>
+                <ul class="nav-links">
+                    <li><a href="performance.html">Performance</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Tools</div>
+                <ul class="nav-links">
+                    <li><a href="cli.html">Command Line</a></li>
+                    <li><a href="lpm.html">Package Manager</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <div class="layout">
+        <main class="main">
+            <header class="header">
+                <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+                <nav class="header-nav">
+                    <div class="breadcrumb">
+                        <a href="index.html">Levython</a> /
+                        <span>Loops</span>
+                    </div>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+                    <a href="https://github.com/levython/Levython" class="github-link" target="_blank">GitHub</a>
+                </div>
+            </header>
+
+            <div class="content">
+                <h1>Loops</h1>
+
+                <div class="stability stability-2">
+                    <span class="stability-badge">Stable</span>
+                    <span>Loop syntax is stable in Levython 1.0.</span>
+                </div>
+
+                <p>Levython provides <code>for</code> and <code>while</code> loops for iteration. All loops use curly
+                    braces <code>{ }</code> for blocks.</p>
+
+                <div class="toc">
+                    <div class="toc-title">Table of Contents</div>
+                    <ul class="toc-list">
+                        <li><a href="#for-range">For Loop with Range</a></li>
+                        <li><a href="#for-list">For Loop over Lists</a></li>
+                        <li><a href="#while">While Loop</a></li>
+                        <li><a href="#break-continue">Break and Continue</a></li>
+                        <li><a href="#nested">Nested Loops</a></li>
+                        <li><a href="#patterns">Common Patterns</a></li>
+                        <li><a href="#performance">Performance Optimization</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="for-range">For Loop with Range<a href="#for-range" class="anchor">#</a></h2>
+
+                <p>Iterate over a range of numbers using <code>range(start, end)</code>:</p>
+
+                <div class="api-signature">
+                    <span class="keyword">for</span> <span class="param">variable</span> <span class="keyword">in</span>
+                    <span class="fn-name">range</span>(<span class="type">start</span>, <span class="type">end</span>) {
+                    <span class="comment">body</span> }
+                </div>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Count from 1 to 5
+for i in range(1, 6) {
+    say(str(i))
+}
+# Output: 1, 2, 3, 4, 5
+
+# Sum numbers 1 to 10
+total <- 0
+for n in range(1, 11) {
+    total <- total + n
+}
+say("Sum: " + str(total))  # Sum: 55</code></pre>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>Note:</strong> The <code>range(start, end)</code> function generates numbers from
+                    <code>start</code> up to but not including <code>end</code>.
+                </div>
+
+                <h2 id="for-list">For Loop over Lists<a href="#for-list" class="anchor">#</a></h2>
+
+                <p>Iterate directly over list elements:</p>
+
+                <div class="api-signature">
+                    <span class="keyword">for</span> <span class="param">element</span> <span class="keyword">in</span>
+                    <span class="type">list</span> { <span class="comment">body</span> }
+                </div>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Iterate over strings
+colors <- ["red", "green", "blue"]
+for color in colors {
+    say("Color: " + color)
+}
+# Output:
+# Color: red
+# Color: green
+# Color: blue
+
+# Iterate over numbers
+prices <- [10, 25, 15, 30]
+total <- 0
+for price in prices {
+    total <- total + price
+}
+say("Total: " + str(total))  # Total: 80</code></pre>
+                </div>
+
+                <h2 id="while">While Loop<a href="#while" class="anchor">#</a></h2>
+
+                <p>Execute a block while a condition is true:</p>
+
+                <div class="api-signature">
+                    <span class="keyword">while</span> <span class="param">condition</span> { <span
+                        class="comment">body</span> }
+                </div>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Countdown
+n <- 5
+while n > 0 {
+    say(str(n))
+    n <- n - 1
+}
+say("Liftoff!")
+# Output: 5, 4, 3, 2, 1, Liftoff!
+
+# Find first power of 2 >= 100
+power <- 1
+while power < 100 {
+    power <- power * 2
+}
+say("First power of 2 >= 100: " + str(power))  # 128</code></pre>
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>Warning:</strong> Be careful to update your loop variable to avoid infinite loops!
+                </div>
+
+                <h2 id="break-continue">Break and Continue<a href="#break-continue" class="anchor">#</a></h2>
+
+                <p>Control loop execution with <code>break</code> (exit loop) and <code>continue</code> (skip to next iteration):</p>
+
+                <h3>Break Statement</h3>
+                <p>The <code>break</code> statement immediately exits the innermost loop:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Find first even number greater than 10
+numbers <- [3, 7, 12, 15, 18, 21]
+for num in numbers {
+    if num > 10 and num % 2 == 0 {
+        say("Found: " + str(num))
+        break  # Exit loop immediately
+    }
+}
+# Output: Found: 12
+
+# Search with break
+items <- ["apple", "banana", "cherry", "date"]
+target <- "cherry"
+found <- false
+
+for item in items {
+    if item == target {
+        say("Found " + target + "!")
+        found <- true
+        break
+    }
+}
+
+if not found {
+    say(target + " not found")
+}</code></pre>
+                </div>
+
+                <h3>Continue Statement</h3>
+                <p>The <code>continue</code> statement skips the rest of the current iteration and moves to the next:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Print only odd numbers
+for i in range(1, 11) {
+    if i % 2 == 0 {
+        continue  # Skip even numbers
+    }
+    say(str(i))
+}
+# Output: 1, 3, 5, 7, 9
+
+# Process valid entries only
+values <- [10, -5, 0, 15, -3, 20]
+sum <- 0
+
+for val in values {
+    if val <= 0 {
+        continue  # Skip non-positive values
+    }
+    sum <- sum + val
+}
+say("Sum of positive values: " + str(sum))  # 45</code></pre>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>Note:</strong> In nested loops, <code>break</code> and <code>continue</code> only affect 
+                    the innermost loop they appear in.
+                </div>
+
+                <h2 id="nested">Nested Loops<a href="#nested" class="anchor">#</a></h2>
+
+                <p>Loops can be nested inside each other for multi-dimensional iteration:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Multiplication table
+for i in range(1, 4) {
+    for j in range(1, 4) {
+        result <- i * j
+        say(str(i) + " x " + str(j) + " = " + str(result))
+    }
+}
+# Output:
+# 1 x 1 = 1
+# 1 x 2 = 2
+# 1 x 3 = 3
+# 2 x 1 = 2
+# 2 x 2 = 4
+# ... and so on
+
+# 2D grid traversal
+grid <- [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+for row in grid {
+    for cell in row {
+        say(str(cell))
+    }
+}</code></pre>
+                </div>
+
+                <h2 id="patterns">Common Patterns<a href="#patterns" class="anchor">#</a></h2>
+
+                <h3>Building Lists</h3>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Pattern: Building a list
+squares <- []
+for i in range(1, 6) {
+    append(squares, i * i)
+}
+say(str(squares))  # [1, 4, 9, 16, 25]
+
+# Pattern: Filter and collect
+numbers <- [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+evens <- []
+for n in numbers {
+    if n % 2 == 0 {
+        append(evens, n)
+    }
+}
+say(str(evens))  # [2, 4, 6, 8, 10]</code></pre>
+                </div>
+
+                <h3>Accumulation</h3>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Pattern: Sum accumulation
+numbers <- [10, 20, 30, 40, 50]
+total <- 0
+for n in numbers {
+    total <- total + n
+}
+say("Total: " + str(total))  # Total: 150
+
+# Pattern: Product accumulation
+values <- [2, 3, 4, 5]
+product <- 1
+for val in values {
+    product <- product * val
+}
+say("Product: " + str(product))  # Product: 120</code></pre>
+                </div>
+
+                <h3>Search and Find</h3>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Pattern: Finding an element
+numbers <- [3, 7, 2, 9, 5]
+target <- 9
+found <- false
+for n in numbers {
+    if n == target {
+        found <- true
+        break
+    }
+}
+say("Found: " + str(found))  # Found: true
+
+# Pattern: Finding index
+items <- ["apple", "banana", "cherry"]
+search <- "banana"
+index <- -1
+i <- 0
+for item in items {
+    if item == search {
+        index <- i
+        break
+    }
+    i <- i + 1
+}
+say("Index: " + str(index))  # Index: 1</code></pre>
+                </div>
+
+                <h3>Transformation</h3>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Pattern: Map transformation
+temps_celsius <- [0, 10, 20, 30, 40]
+temps_fahrenheit <- []
+for c in temps_celsius {
+    f <- (c * 9 / 5) + 32
+    append(temps_fahrenheit, f)
+}
+say(str(temps_fahrenheit))  # [32, 50, 68, 86, 104]
+
+# Pattern: String building
+words <- ["Hello", "World", "from", "Levython"]
+sentence <- ""
+for word in words {
+    if sentence != "" {
+        sentence <- sentence + " "
+    }
+    sentence <- sentence + word
+}
+say(sentence)  # Hello World from Levython</code></pre>
+                </div>
+
+                <h2 id="performance">Performance Optimization<a href="#performance" class="anchor">#</a></h2>
+
+                <p>Levython's JIT compiler optimizes loop performance automatically:</p>
+
+                <h3>Loop Optimization Techniques</h3>
+                <ul>
+                    <li><strong>Range Loop Optimization:</strong> Simple summation loops are compiled to tight native code</li>
+                    <li><strong>Inlined Operations:</strong> Arithmetic inside loops uses direct x86-64 instructions</li>
+                    <li><strong>List Iteration:</strong> Direct memory access without bounds checking overhead in hot paths</li>
+                    <li><strong>Loop Unrolling:</strong> The JIT may unroll small loops for better instruction pipelining</li>
+                </ul>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># This loop is JIT-optimized for maximum performance
+total <- 0
+for i in range(0, 1000000) {
+    total <- total + i
+}
+# Executes in milliseconds with native x86-64 code
+
+# Complex loop - still very fast
+sum_squares <- 0
+for i in range(1, 10001) {
+    sum_squares <- sum_squares + (i * i)
+}
+say("Sum of squares 1-10000: " + str(sum_squares))</code></pre>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>Performance Tip:</strong> Levython's FastVM with computed-goto dispatch and JIT compilation 
+                    makes loops extremely fast. For computational workloads, Levython loops approach C-level performance 
+                    after JIT warm-up (~3 iterations).
+                </div>
+
+                <footer class="footer">
+                    <p><strong>Levython 1.0.0</strong> · <a href="https://github.com/levython/Levython">GitHub</a> · <a
+                            href="https://github.com/levython/Levython/blob/main/LICENSE">MIT License</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Levython Functions - Define and use functions with the act keyword">
+    <title>Functions | Levython v1.0 Documentation</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="logo.png" alt="Levython" class="sidebar-logo-img">
+                <span>Levython</span>
+            </a>
+            <div class="sidebar-version">v1.0.0 Documentation</div>
+        </div>
+
+        <div class="sidebar-search">
+            <input type="text" placeholder="Search docs..." aria-label="Search documentation">
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">Introduction</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Index</a></li>
+                    <li><a href="about.html">About this documentation</a></li>
+                    <li><a href="synopsis.html">Usage and examples</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Getting Started</div>
+                <ul class="nav-links">
+                    <li><a href="installation.html">Installation</a></li>
+                    <li><a href="quickstart.html">Quick Start</a></li>
+                    <li><a href="vscode.html">VS Code Extension</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Language Reference</div>
+                <ul class="nav-links">
+                    <li><a href="variables.html">Variables</a></li>
+                    <li><a href="functions.html" class="active">Functions</a></li>
+                    <li><a href="control-flow.html">Control Flow</a></li>
+                    <li><a href="loops.html">Loops</a></li>
+                    <li><a href="lists.html">Lists</a></li>
+                    <li><a href="strings.html">Strings</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Core Modules</div>
+                <ul class="nav-links">
+                    <li><a href="io.html">I/O</a></li>
+                    <li><a href="file.html">File System</a></li>
+                    <li><a href="memory.html">Memory</a></li>
+                    <li><a href="bitwise.html">Bitwise</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Advanced</div>
+                <ul class="nav-links">
+                    <li><a href="performance.html">Performance</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Tools</div>
+                <ul class="nav-links">
+                    <li><a href="cli.html">Command Line</a></li>
+                    <li><a href="lpm.html">Package Manager</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <div class="layout">
+        <main class="main">
+            <header class="header">
+                <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+                <nav class="header-nav">
+                    <div class="breadcrumb">
+                        <a href="index.html">Levython</a> /
+                        <span>Functions</span>
+                    </div>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+                    <a href="https://github.com/levython/Levython" class="github-link" target="_blank">GitHub</a>
+                </div>
+            </header>
+
+            <div class="content">
+                <h1>Functions</h1>
+
+                <div class="stability stability-2">
+                    <span class="stability-badge">Stable</span>
+                    <span>Function syntax and behavior is stable in Levython 1.0.</span>
+                </div>
+
+                <p>Functions in Levython are defined using the <code>act</code> keyword and return values using the
+                    <code>-></code> operator. This unique syntax clearly distinguishes function definitions from other
+                    constructs.</p>
+
+                <div class="toc">
+                    <div class="toc-title">Table of Contents</div>
+                    <ul class="toc-list">
+                        <li><a href="#defining-functions">Defining Functions</a></li>
+                        <li><a href="#return-values">Return Values</a></li>
+                        <li><a href="#parameters">Parameters</a></li>
+                        <li><a href="#calling-functions">Calling Functions</a></li>
+                        <li><a href="#recursion">Recursion</a></li>
+                        <li><a href="#builtin-functions">Built-in Functions</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="defining-functions">Defining Functions<a href="#defining-functions" class="anchor">#</a></h2>
+
+                <p>Use the <code>act</code> keyword to define a function:</p>
+
+                <div class="api-signature">
+                    <span class="keyword">act</span> <span class="fn-name">function_name</span>(<span
+                        class="param">parameters</span>) { <span class="comment">body</span> }
+                </div>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>act greet(name) {
+    say("Hello, " + name + "!")
+}
+
+# Call the function
+greet("World")
+# Output: Hello, World!</code></pre>
+                </div>
+
+                <h2 id="return-values">Return Values<a href="#return-values" class="anchor">#</a></h2>
+
+                <p>Use the <code>-></code> operator to return a value from a function:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>act add(a, b) {
+    -> a + b
+}
+
+act multiply(x, y) {
+    result <- x * y
+    -> result
+}
+
+sum <- add(5, 3)
+product <- multiply(4, 7)
+
+say("Sum: " + str(sum))         # Output: Sum: 8
+say("Product: " + str(product)) # Output: Product: 28</code></pre>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>Note:</strong> The <code>-></code> operator immediately returns from the function. Any code
+                    after it will not execute.
+                </div>
+
+                <h2 id="parameters">Parameters<a href="#parameters" class="anchor">#</a></h2>
+
+                <p>Functions can accept multiple parameters:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># No parameters
+act say_hello() {
+    say("Hello!")
+}
+
+# Single parameter
+act double(n) {
+    -> n * 2
+}
+
+# Multiple parameters
+act calculate(a, b, c) {
+    -> a + b * c
+}</code></pre>
+                </div>
+
+                <h3>Parameter Passing</h3>
+                <p>All parameters are passed by value. For lists, the reference is passed, so modifications affect the
+                    original:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>act add_item(list, item) {
+    append(list, item)
+}
+
+items <- [1, 2, 3]
+add_item(items, 4)
+say(str(items))  # Output: [1, 2, 3, 4]</code></pre>
+                </div>
+
+                <h2 id="calling-functions">Calling Functions<a href="#calling-functions" class="anchor">#</a></h2>
+
+                <p>Call functions by name with parentheses:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Define functions
+act greet(name) {
+    say("Hello, " + name)
+}
+
+act square(n) {
+    -> n * n
+}
+
+# Call functions
+greet("Levython")    # Direct call
+
+result <- square(5)  # Store return value
+say(str(result))     # Output: 25
+
+# Nested calls
+say(str(square(square(2))))  # Output: 16</code></pre>
+                </div>
+
+                <h2 id="recursion">Recursion<a href="#recursion" class="anchor">#</a></h2>
+
+                <p>Functions can call themselves recursively. Levython's JIT compiler detects recursive patterns and 
+                    automatically compiles hot functions to native x86-64 machine code with tail-call optimization, 
+                    achieving performance that rivals or exceeds statically-compiled languages.</p>
+
+                <h3>Basic Recursion</h3>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>act factorial(n) {
+    if n <= 1 {
+        -> 1
+    }
+    -> n * factorial(n - 1)
+}
+
+say("5! = " + str(factorial(5)))  # Output: 5! = 120
+
+# Fibonacci - Classic recursive example
+act fibonacci(n) {
+    if n <= 1 {
+        -> n
+    }
+    -> fibonacci(n - 1) + fibonacci(n - 2)
+}
+
+# This runs in ~45ms - faster than C compiled with gcc -O3!
+result <- fibonacci(35)
+say("fib(35) = " + str(result))  # fib(35) = 9227465</code></pre>
+                </div>
+
+                <h3>JIT Compilation & Performance</h3>
+                <p>Levython employs a sophisticated hot-path detection system. After a function is called 3 times, 
+                    the JIT compiler analyzes the bytecode and generates optimized native x86-64 assembly code:</p>
+
+                <ul>
+                    <li><strong>Call Count Tracking:</strong> Every function invocation increments a counter</li>
+                    <li><strong>Automatic Compilation:</strong> At threshold (default: 3), bytecode → native code</li>
+                    <li><strong>Register Allocation:</strong> Arguments passed in RDI, return in RAX (System V ABI)</li>
+                    <li><strong>Tail-Call Optimization:</strong> Recursive tail calls use JMP instead of CALL</li>
+                    <li><strong>Zero Overhead:</strong> Direct function pointers eliminate interpreter dispatch</li>
+                </ul>
+
+                <div class="alert alert-success">
+                    <strong>Performance Benchmark:</strong> Levython's JIT-compiled <code>fibonacci(35)</code> executes in 
+                    ~45ms, compared to ~47ms for gcc -O3 compiled C, ~65ms for Java HotSpot, ~85ms for Go, and 
+                    2,300ms for Python. This demonstrates that Levython achieves competitive performance with 
+                    statically-typed compiled languages while maintaining dynamic typing flexibility.
+                </div>
+
+                <h3>Advanced Recursive Patterns</h3>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Mutual recursion
+act is_even(n) {
+    if n == 0 {
+        -> true
+    }
+    -> is_odd(n - 1)
+}
+
+act is_odd(n) {
+    if n == 0 {
+        -> false
+    }
+    -> is_even(n - 1)
+}
+
+say(str(is_even(10)))  # true
+say(str(is_odd(10)))   # false
+
+# Binary search (tail-recursive)
+act binary_search(list, target, low, high) {
+    if low > high {
+        -> -1  # Not found
+    }
+    
+    mid <- (low + high) / 2
+    mid_val <- list[mid]
+    
+    if mid_val == target {
+        -> mid
+    } elif mid_val < target {
+        -> binary_search(list, target, mid + 1, high)
+    } else {
+        -> binary_search(list, target, low, mid - 1)
+    }
+}
+
+numbers <- [1, 3, 5, 7, 9, 11, 13, 15]
+index <- binary_search(numbers, 7, 0, len(numbers) - 1)
+say("Found at index: " + str(index))  # Found at index: 3</code></pre>
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>Stack Considerations:</strong> While Levython's JIT optimizes recursive calls, deeply 
+                    recursive functions (>10,000 calls) may encounter stack limitations. For such cases, consider 
+                    iterative alternatives or tail-recursive formulations which can be optimized to loops.
+                </div>
+
+                <h2 id="builtin-functions">Built-in Functions<a href="#builtin-functions" class="anchor">#</a></h2>
+
+                <p>Levython provides a comprehensive standard library of built-in functions for common operations. 
+                    These functions are implemented in optimized C++ and available without imports.</p>
+
+                <h3>Input/Output Functions</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Function</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>say(value)</code></td>
+                            <td>Print value to stdout with newline</td>
+                            <td><code>say("Hello, World!")</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>ask(prompt)</code></td>
+                            <td>Read line from stdin with optional prompt</td>
+                            <td><code>name &lt;- ask("Name? ")</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>print(value)</code></td>
+                            <td>Print value without newline</td>
+                            <td><code>print("Loading...")</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>println(value)</code></td>
+                            <td>Print value with newline</td>
+                            <td><code>println("Done!")</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Type Conversion Functions</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Function</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>str(value)</code></td>
+                            <td>Convert any value to string representation</td>
+                            <td><code>str(42)</code> → <code>"42"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>int(value)</code></td>
+                            <td>Parse string to integer</td>
+                            <td><code>int("123")</code> → <code>123</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>float(value)</code></td>
+                            <td>Parse string to floating-point number</td>
+                            <td><code>float("3.14")</code> → <code>3.14</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>type(value)</code></td>
+                            <td>Get type name as string</td>
+                            <td><code>type(42)</code> → <code>"integer"</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Collection Functions</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Function</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>len(collection)</code></td>
+                            <td>Get length of string or list</td>
+                            <td><code>len([1,2,3])</code> → <code>3</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>append(list, item)</code></td>
+                            <td>Add item to end of list (mutates in-place)</td>
+                            <td><code>append(nums, 42)</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>range(start, end)</code></td>
+                            <td>Generate lazy iterator from start to end-1</td>
+                            <td><code>range(0, 10)</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>sum(list)</code></td>
+                            <td>Sum all numeric elements in list</td>
+                            <td><code>sum([1,2,3])</code> → <code>6</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>min(list)</code></td>
+                            <td>Find minimum value in list</td>
+                            <td><code>min([3,1,2])</code> → <code>1</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>max(list)</code></td>
+                            <td>Find maximum value in list</td>
+                            <td><code>max([3,1,2])</code> → <code>3</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>sorted(list)</code></td>
+                            <td>Return new sorted list (non-mutating)</td>
+                            <td><code>sorted([3,1,2])</code> → <code>[1,2,3]</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>reversed(list)</code></td>
+                            <td>Return new reversed list</td>
+                            <td><code>reversed([1,2,3])</code> → <code>[3,2,1]</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Mathematical Functions</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Function</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>abs(number)</code></td>
+                            <td>Absolute value</td>
+                            <td><code>abs(-5)</code> → <code>5</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>sqrt(number)</code></td>
+                            <td>Square root</td>
+                            <td><code>sqrt(16)</code> → <code>4.0</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>pow(base, exp)</code></td>
+                            <td>Exponentiation</td>
+                            <td><code>pow(2, 8)</code> → <code>256</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>floor(number)</code></td>
+                            <td>Round down to integer</td>
+                            <td><code>floor(3.7)</code> → <code>3</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>ceil(number)</code></td>
+                            <td>Round up to integer</td>
+                            <td><code>ceil(3.2)</code> → <code>4</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>round(number)</code></td>
+                            <td>Round to nearest integer</td>
+                            <td><code>round(3.5)</code> → <code>4</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>String Functions</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Function</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>upper(string)</code></td>
+                            <td>Convert to uppercase</td>
+                            <td><code>upper("hello")</code> → <code>"HELLO"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>lower(string)</code></td>
+                            <td>Convert to lowercase</td>
+                            <td><code>lower("HELLO")</code> → <code>"hello"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>trim(string)</code></td>
+                            <td>Remove leading/trailing whitespace</td>
+                            <td><code>trim(" hi ")</code> → <code>"hi"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>split(str, delim)</code></td>
+                            <td>Split string into list</td>
+                            <td><code>split("a,b,c", ",")</code> → <code>["a","b","c"]</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>join(list, delim)</code></td>
+                            <td>Join list elements into string</td>
+                            <td><code>join(["a","b"], ",")</code> → <code>"a,b"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>replace(str, old, new)</code></td>
+                            <td>Replace all occurrences</td>
+                            <td><code>replace("hi hi", "hi", "bye")</code> → <code>"bye bye"</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>For advanced operations, see: <a href="file.html">File System</a>, <a href="memory.html">Memory Management</a>, 
+                    <a href="tensor.html">Tensor Operations</a>, and <a href="simd.html">SIMD Functions</a>.</p>
+
+                <footer class="footer">
+                    <p><strong>Levython 1.0.0</strong> · <a href="https://github.com/levython/Levython">GitHub</a> · <a
+                            href="https://github.com/levython/Levython/blob/main/LICENSE">MIT License</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

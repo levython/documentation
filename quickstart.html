@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Levython Quick Start - Write your first Levython program">
+    <title>Quick Start | Levython v1.0 Documentation</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="logo.png" alt="Levython" class="sidebar-logo-img">
+                <span>Levython</span>
+            </a>
+            <div class="sidebar-version">v1.0.0 Documentation</div>
+        </div>
+
+        <div class="sidebar-search">
+            <input type="text" placeholder="Search docs..." aria-label="Search documentation">
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">Introduction</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Index</a></li>
+                    <li><a href="about.html">About this documentation</a></li>
+                    <li><a href="synopsis.html">Usage and examples</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Getting Started</div>
+                <ul class="nav-links">
+                    <li><a href="installation.html">Installation</a></li>
+                    <li><a href="quickstart.html" class="active">Quick Start</a></li>
+                    <li><a href="vscode.html">VS Code Extension</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Language Reference</div>
+                <ul class="nav-links">
+                    <li><a href="variables.html">Variables</a></li>
+                    <li><a href="functions.html">Functions</a></li>
+                    <li><a href="control-flow.html">Control Flow</a></li>
+                    <li><a href="loops.html">Loops</a></li>
+                    <li><a href="lists.html">Lists</a></li>
+                    <li><a href="strings.html">Strings</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Core Modules</div>
+                <ul class="nav-links">
+                    <li><a href="io.html">I/O</a></li>
+                    <li><a href="file.html">File System</a></li>
+                    <li><a href="memory.html">Memory</a></li>
+                    <li><a href="bitwise.html">Bitwise</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Advanced</div>
+                <ul class="nav-links">
+                    <li><a href="performance.html">Performance</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Tools</div>
+                <ul class="nav-links">
+                    <li><a href="cli.html">Command Line</a></li>
+                    <li><a href="lpm.html">Package Manager</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <div class="layout">
+        <main class="main">
+            <header class="header">
+                <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+                <nav class="header-nav">
+                    <div class="breadcrumb">
+                        <a href="index.html">Levython</a> /
+                        <span>Quick Start</span>
+                    </div>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+                    <a href="https://github.com/levython/Levython" class="github-link" target="_blank">GitHub</a>
+                </div>
+            </header>
+
+            <div class="content">
+                <h1>Quick Start</h1>
+
+                <p>Get started with Levython in minutes. This guide will walk you through writing and running your first
+                    programs.</p>
+
+                <div class="toc">
+                    <div class="toc-title">Table of Contents</div>
+                    <ul class="toc-list">
+                        <li><a href="#hello-world">Hello World</a></li>
+                        <li><a href="#file-extensions">File Extensions</a></li>
+                        <li><a href="#basic-program">A Basic Program</a></li>
+                        <li><a href="#running-examples">Running Examples</a></li>
+                        <li><a href="#next-steps">Next Steps</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="hello-world">Hello World<a href="#hello-world" class="anchor">#</a></h2>
+
+                <p>Create a file named <code>hello.levy</code>:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>hello.levy</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>say("Hello, World!")</code></pre>
+                </div>
+
+                <p>Run it:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>terminal</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>$ levython hello.levy
+Hello, World!</code></pre>
+                </div>
+
+                <h2 id="file-extensions">File Extensions<a href="#file-extensions" class="anchor">#</a></h2>
+
+                <p>Levython supports two file extensions:</p>
+
+                <ul>
+                    <li><code>.levy</code> - Full extension (recommended)</li>
+                    <li><code>.ly</code> - Short extension</li>
+                </ul>
+
+                <p>Both are fully supported and equivalent:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>terminal</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>levython hello.levy   # Works
+levython hello.ly     # Also works</code></pre>
+                </div>
+
+                <h2 id="basic-program">A Basic Program<a href="#basic-program" class="anchor">#</a></h2>
+
+                <p>Here's a comprehensive example demonstrating core Levython features including functions, variables, 
+                    control flow, and iteration:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>calculator.levy</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># A simple calculator demonstrating Levython features
+
+# Function definitions use 'act' keyword
+# Returns use '->' operator
+act add(a, b) {
+    -> a + b
+}
+
+act subtract(a, b) {
+    -> a - b
+}
+
+act multiply(a, b) {
+    -> a * b
+}
+
+act divide(a, b) {
+    if b == 0 {
+        say("Error: Division by zero")
+        -> 0
+    }
+    -> a / b
+}
+
+# Variable assignment uses '<-' operator
+x <- 10
+y <- 5
+
+# Output with say() function
+say("Calculator Demo")
+say("===============")
+say(str(x) + " + " + str(y) + " = " + str(add(x, y)))
+say(str(x) + " - " + str(y) + " = " + str(subtract(x, y)))
+say(str(x) + " * " + str(y) + " = " + str(multiply(x, y)))
+say(str(x) + " / " + str(y) + " = " + str(divide(x, y)))
+
+# Conditional execution
+if x > y {
+    say(str(x) + " is greater than " + str(y))
+} else {
+    say(str(y) + " is greater than " + str(x))
+}
+
+# Iteration with for loops
+say("")
+say("Counting to 5:")
+for i in range(1, 6) {
+    say("  " + str(i))
+}
+
+# Working with lists
+say("")
+say("Computing squares:")
+numbers <- [1, 2, 3, 4, 5]
+for n in numbers {
+    square <- multiply(n, n)
+    say("  " + str(n) + " squared = " + str(square))
+}</code></pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>output</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>Calculator Demo
+===============
+10 + 5 = 15
+10 - 5 = 5
+10 * 5 = 50
+10 / 5 = 2
+10 is greater than 5
+
+Counting to 5:
+  1
+  2
+  3
+  4
+  5
+
+Computing squares:
+  1 squared = 1
+  2 squared = 4
+  3 squared = 9
+  4 squared = 16
+  5 squared = 25</code></pre>
+                </div>
+
+                <h3>Interactive Input</h3>
+                <p>Levython supports interactive user input with the <code>ask()</code> function:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>interactive.levy</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Get user input
+name <- ask("What is your name? ")
+say("Hello, " + name + "!")
+
+# Input can be converted to numbers
+age_str <- ask("What is your age? ")
+age <- int(age_str)
+
+if age >= 18 {
+    say("You are an adult.")
+} else {
+    say("You are a minor.")
+}</code></pre>
+                </div>
+
+                <h3>Syntax Highlights</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Syntax</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Variable Assignment</td>
+                            <td><code>&lt;-</code></td>
+                            <td><code>x &lt;- 42</code></td>
+                        </tr>
+                        <tr>
+                            <td>Function Definition</td>
+                            <td><code>act</code></td>
+                            <td><code>act greet(name) { ... }</code></td>
+                        </tr>
+                        <tr>
+                            <td>Return Statement</td>
+                            <td><code>-&gt;</code></td>
+                            <td><code>-&gt; result</code></td>
+                        </tr>
+                        <tr>
+                            <td>Output</td>
+                            <td><code>say()</code></td>
+                            <td><code>say("Hello")</code></td>
+                        </tr>
+                        <tr>
+                            <td>Input</td>
+                            <td><code>ask()</code></td>
+                            <td><code>name &lt;- ask("Name? ")</code></td>
+                        </tr>
+                        <tr>
+                            <td>Comments</td>
+                            <td><code>#</code></td>
+                            <td><code># This is a comment</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2 id="running-examples">Running Examples<a href="#running-examples" class="anchor">#</a></h2>
+
+                <p>Levython comes with 10 tutorial examples in the <code>examples/</code> directory:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>File</th>
+                            <th>Topic</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>01_hello_world.levy</code></td>
+                            <td>Basic output</td>
+                        </tr>
+                        <tr>
+                            <td><code>02_variables.levy</code></td>
+                            <td>Variables and types</td>
+                        </tr>
+                        <tr>
+                            <td><code>03_arithmetic.levy</code></td>
+                            <td>Math operations</td>
+                        </tr>
+                        <tr>
+                            <td><code>04_conditionals.levy</code></td>
+                            <td>If/else</td>
+                        </tr>
+                        <tr>
+                            <td><code>05_loops.levy</code></td>
+                            <td>For and while</td>
+                        </tr>
+                        <tr>
+                            <td><code>06_functions.levy</code></td>
+                            <td>Functions with act</td>
+                        </tr>
+                        <tr>
+                            <td><code>07_lists.levy</code></td>
+                            <td>Working with lists</td>
+                        </tr>
+                        <tr>
+                            <td><code>08_strings.levy</code></td>
+                            <td>String operations</td>
+                        </tr>
+                        <tr>
+                            <td><code>09_fibonacci.levy</code></td>
+                            <td>Performance demo</td>
+                        </tr>
+                        <tr>
+                            <td><code>10_file_io.levy</code></td>
+                            <td>File operations</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Run any example:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>terminal</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>levython examples/01_hello_world.levy</code></pre>
+                </div>
+
+                <h2 id="next-steps">Next Steps<a href="#next-steps" class="anchor">#</a></h2>
+
+                <p>Now that you've run your first Levython programs, dive deeper into the language features:</p>
+
+                <h3>Core Language</h3>
+                <ul>
+                    <li><a href="variables.html">Variables & Data Types</a> - Numbers, strings, booleans, lists, and type conversion</li>
+                    <li><a href="functions.html">Functions</a> - Defining functions with <code>act</code>, parameters, returns, and recursion</li>
+                    <li><a href="control-flow.html">Control Flow</a> - Conditional execution with if/elif/else</li>
+                    <li><a href="loops.html">Loops</a> - Iteration with for and while loops</li>
+                    <li><a href="lists.html">Lists & Collections</a> - Creating, accessing, and manipulating lists</li>
+                </ul>
+
+                <h3>Input/Output & Files</h3>
+                <ul>
+                    <li><a href="io.html">Input/Output</a> - User input with <code>ask()</code> and output formatting</li>
+                    <li><a href="file.html">File System</a> - Reading and writing files, directory operations</li>
+                </ul>
+
+                <h3>Advanced Topics</h3>
+                <ul>
+                    <li><a href="performance.html">Performance Optimization</a> - Understanding JIT compilation and optimization techniques</li>
+                    <li><a href="memory.html">Memory Management</a> - Direct memory operations and NaN-boxing internals</li>
+                    <li><a href="bitwise.html">Bitwise Operations</a> - Low-level bit manipulation</li>
+                    <li><a href="tensor.html">Tensor Operations</a> - High-performance multi-dimensional arrays for ML/AI</li>
+                    <li><a href="simd.html">SIMD Vectorization</a> - Parallel data processing with vector instructions</li>
+                </ul>
+
+                <h3>Tools & Ecosystem</h3>
+                <ul>
+                    <li><a href="cli.html">Command Line Interface</a> - All CLI options and flags</li>
+                    <li><a href="lpm.html">Package Manager (LPM)</a> - Installing and managing packages</li>
+                    <li><a href="vscode.html">VS Code Extension</a> - Syntax highlighting, snippets, and debugging</li>
+                </ul>
+
+                <div class="alert alert-success">
+                    <strong>Pro Tip:</strong> Install the VS Code extension for enhanced development experience with 
+                    syntax highlighting, code snippets, and auto-completion. See the 
+                    <a href="vscode.html">VS Code Extension guide</a> for installation instructions.
+                </div>
+
+                <h3>REPL Mode</h3>
+                <p>Levython includes an interactive REPL (Read-Eval-Print Loop) for experimenting with code:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>terminal</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>$ levython
+Levython 1.0.0 REPL
+Type 'exit' to quit
+
+>>> x <- 42
+>>> say(str(x * 2))
+84
+>>> act square(n) { -> n * n }
+>>> square(7)
+49
+>>> exit</code></pre>
+                </div>
+
+                <p>The REPL is perfect for quick calculations, testing functions, and learning the language interactively.</p>
+
+                <footer class="footer">
+                    <p><strong>Levython 1.0.0</strong> · <a href="https://github.com/levython/Levython">GitHub</a> · <a
+                            href="https://github.com/levython/Levython/blob/main/LICENSE">MIT License</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

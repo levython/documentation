@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Levython Synopsis - Usage and examples">
+    <title>Synopsis | Levython v1.0 Documentation</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="logo.png" alt="Levython" class="sidebar-logo-img">
+                <span>Levython</span>
+            </a>
+            <div class="sidebar-version">v1.0.0 Documentation</div>
+        </div>
+
+        <div class="sidebar-search">
+            <input type="text" placeholder="Search docs..." aria-label="Search documentation">
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">Introduction</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Index</a></li>
+                    <li><a href="about.html">About this documentation</a></li>
+                    <li><a href="synopsis.html" class="active">Usage and examples</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Getting Started</div>
+                <ul class="nav-links">
+                    <li><a href="installation.html">Installation</a></li>
+                    <li><a href="quickstart.html">Quick Start</a></li>
+                    <li><a href="vscode.html">VS Code Extension</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Language Reference</div>
+                <ul class="nav-links">
+                    <li><a href="variables.html">Variables</a></li>
+                    <li><a href="functions.html">Functions</a></li>
+                    <li><a href="control-flow.html">Control Flow</a></li>
+                    <li><a href="loops.html">Loops</a></li>
+                    <li><a href="lists.html">Lists</a></li>
+                    <li><a href="strings.html">Strings</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Core Modules</div>
+                <ul class="nav-links">
+                    <li><a href="io.html">I/O</a></li>
+                    <li><a href="file.html">File System</a></li>
+                    <li><a href="memory.html">Memory</a></li>
+                    <li><a href="bitwise.html">Bitwise</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Advanced</div>
+                <ul class="nav-links">
+                    <li><a href="performance.html">Performance</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Tools</div>
+                <ul class="nav-links">
+                    <li><a href="cli.html">Command Line</a></li>
+                    <li><a href="lpm.html">Package Manager</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <div class="layout">
+        <main class="main">
+            <header class="header">
+                <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+                <nav class="header-nav">
+                    <div class="breadcrumb">
+                        <a href="index.html">Levython</a> /
+                        <span>Synopsis</span>
+                    </div>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+                    <a href="https://github.com/levython/Levython" class="github-link" target="_blank">GitHub</a>
+                </div>
+            </header>
+
+            <div class="content">
+                <h1>Usage & Examples</h1>
+
+                <div class="stability stability-2">
+                    <span class="stability-badge">Stable</span>
+                    <span>Command-line usage is stable in Levython 1.0.</span>
+                </div>
+
+                <p>This page provides a comprehensive overview of Levython usage patterns and practical examples.</p>
+
+                <div class="toc">
+                    <div class="toc-title">Table of Contents</div>
+                    <ul class="toc-list">
+                        <li><a href="#usage">Command Line Usage</a></li>
+                        <li><a href="#hello-world">Hello World</a></li>
+                        <li><a href="#variables">Working with Variables</a></li>
+                        <li><a href="#functions">Functions</a></li>
+                        <li><a href="#data-structures">Data Structures</a></li>
+                        <li><a href="#file-io">File I/O</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="usage">Command Line Usage<a href="#usage" class="anchor">#</a></h2>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>terminal</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Run a Levython file
+levython script.levy
+
+# Run REPL (interactive mode)
+levython
+
+# Execute inline code
+levython -e 'say("Hello, World!")'
+
+# Show version
+levython --version
+
+# Get help
+levython --help</code></pre>
+                </div>
+
+                <h2 id="hello-world">Hello World<a href="#hello-world" class="anchor">#</a></h2>
+
+                <p>The simplest Levython program:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>hello.levy</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>say("Hello, World!")</code></pre>
+                </div>
+
+                <h2 id="variables">Working with Variables<a href="#variables" class="anchor">#</a></h2>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>variables.levy</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Numbers
+age <- 25
+price <- 19.99
+
+# Strings
+name <- "Levython"
+message <- "Fast as C!"
+
+# Booleans
+is_fast <- true
+is_slow <- false
+
+# Lists
+numbers <- [1, 2, 3, 4, 5]
+mixed <- ["text", 42, true]
+
+# Display values
+say("Name: " + name)
+say("Age: " + str(age))
+say("Fast? " + str(is_fast))</code></pre>
+                </div>
+
+                <h2 id="functions">Functions<a href="#functions" class="anchor">#</a></h2>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>functions.levy</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Simple function
+act greet(name) {
+    say("Hello, " + name + "!")
+}
+
+# Function with return value
+act add(a, b) {
+    -> a + b
+}
+
+# Recursive function
+act factorial(n) {
+    if n <= 1 {
+        -> 1
+    }
+    -> n * factorial(n - 1)
+}
+
+# Call functions
+greet("World")
+result <- add(10, 20)
+say("10 + 20 = " + str(result))
+
+fact <- factorial(5)
+say("5! = " + str(fact))</code></pre>
+                </div>
+
+                <h2 id="data-structures">Data Structures<a href="#data-structures" class="anchor">#</a></h2>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>lists.levy</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Create a list
+fruits <- ["apple", "banana", "cherry"]
+
+# Access elements
+first <- fruits[0]
+say("First fruit: " + first)
+
+# Add elements
+append(fruits, "date")
+append(fruits, "elderberry")
+
+# Iterate over list
+say("All fruits:")
+for fruit in fruits {
+    say("  - " + fruit)
+}
+
+# List operations
+numbers <- [5, 2, 8, 1, 9]
+say("Length: " + str(len(numbers)))
+say("Sum: " + str(sum(numbers)))
+say("Min: " + str(min(numbers)))
+say("Max: " + str(max(numbers)))
+say("Sorted: " + str(sorted(numbers)))</code></pre>
+                </div>
+
+                <h2 id="file-io">File I/O<a href="#file-io" class="anchor">#</a></h2>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>file_io.levy</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Write to file
+content <- "Hello from Levython!\nFast and powerful."
+write_file("output.txt", content)
+say("File written successfully")
+
+# Read from file
+data <- read_file("output.txt")
+say("File contents:")
+say(data)
+
+# Check if file exists
+if file_exists("output.txt") {
+    say("File exists!")
+} else {
+    say("File not found")
+}</code></pre>
+                </div>
+
+                <footer class="footer">
+                    <p><strong>Levython 1.0.0</strong> · <a href="https://github.com/levython/Levython">GitHub</a> · <a
+                            href="https://github.com/levython/Levython/blob/main/LICENSE">MIT License</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

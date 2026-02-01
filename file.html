@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Levython File System - Read, write, and manage files">
+    <title>File System | Levython v1.0 Documentation</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="logo.png" alt="Levython" class="sidebar-logo-img">
+                <span>Levython</span>
+            </a>
+            <div class="sidebar-version">v1.0.0 Documentation</div>
+        </div>
+
+        <div class="sidebar-search">
+            <input type="text" placeholder="Search docs..." aria-label="Search documentation">
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">Introduction</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Index</a></li>
+                    <li><a href="about.html">About this documentation</a></li>
+                    <li><a href="synopsis.html">Usage and examples</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Getting Started</div>
+                <ul class="nav-links">
+                    <li><a href="installation.html">Installation</a></li>
+                    <li><a href="quickstart.html">Quick Start</a></li>
+                    <li><a href="vscode.html">VS Code Extension</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Language Reference</div>
+                <ul class="nav-links">
+                    <li><a href="variables.html">Variables</a></li>
+                    <li><a href="functions.html">Functions</a></li>
+                    <li><a href="control-flow.html">Control Flow</a></li>
+                    <li><a href="loops.html">Loops</a></li>
+                    <li><a href="lists.html">Lists</a></li>
+                    <li><a href="strings.html">Strings</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Core Modules</div>
+                <ul class="nav-links">
+                    <li><a href="io.html">I/O</a></li>
+                    <li><a href="file.html" class="active">File System</a></li>
+                    <li><a href="memory.html">Memory</a></li>
+                    <li><a href="bitwise.html">Bitwise</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Advanced</div>
+                <ul class="nav-links">
+                    <li><a href="performance.html">Performance</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Tools</div>
+                <ul class="nav-links">
+                    <li><a href="cli.html">Command Line</a></li>
+                    <li><a href="lpm.html">Package Manager</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <div class="layout">
+        <main class="main">
+            <header class="header">
+                <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+                <nav class="header-nav">
+                    <div class="breadcrumb">
+                        <a href="index.html">Levython</a> /
+                        <span>File System</span>
+                    </div>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+                    <a href="https://github.com/levython/Levython" class="github-link" target="_blank">GitHub</a>
+                </div>
+            </header>
+
+            <div class="content">
+                <h1>File System</h1>
+
+                <div class="stability stability-2">
+                    <span class="stability-badge">Stable</span>
+                    <span>File system functions are stable in Levython 1.0.</span>
+                </div>
+
+                <p>Levython provides built-in functions for reading, writing, and checking files.</p>
+
+                <div class="toc">
+                    <div class="toc-title">Table of Contents</div>
+                    <ul class="toc-list">
+                        <li><a href="#read_file">read_file(path)</a></li>
+                        <li><a href="#write_file">write_file(path, content)</a></li>
+                        <li><a href="#file_exists">file_exists(path)</a></li>
+                        <li><a href="#examples">Examples</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="read_file">read_file(path)<a href="#read_file" class="anchor">#</a></h2>
+
+                <p>Read the entire contents of a file as a string.</p>
+
+                <div class="api-signature">
+                    <span class="fn-name">read_file</span>(<span class="param">path</span>: <span
+                        class="type">string</span>) -> <span class="type">string</span>
+                </div>
+
+                <ul class="params-list">
+                    <li>
+                        <span class="param-name">path</span>
+                        <span class="param-type">string</span>
+                        <div class="param-desc">Path to the file to read</div>
+                    </li>
+                </ul>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>content <- read_file("data.txt")
+say(content)</code></pre>
+                </div>
+
+                <h2 id="write_file">write_file(path, content)<a href="#write_file" class="anchor">#</a></h2>
+
+                <p>Write a string to a file. Creates the file if it doesn't exist, overwrites if it does.</p>
+
+                <div class="api-signature">
+                    <span class="fn-name">write_file</span>(<span class="param">path</span>: <span
+                        class="type">string</span>, <span class="param">content</span>: <span
+                        class="type">string</span>) -> <span class="type">null</span>
+                </div>
+
+                <ul class="params-list">
+                    <li>
+                        <span class="param-name">path</span>
+                        <span class="param-type">string</span>
+                        <div class="param-desc">Path to the file to write</div>
+                    </li>
+                    <li>
+                        <span class="param-name">content</span>
+                        <span class="param-type">string</span>
+                        <div class="param-desc">Content to write to the file</div>
+                    </li>
+                </ul>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>write_file("output.txt", "Hello, World!")
+say("File written successfully")</code></pre>
+                </div>
+
+                <h2 id="file_exists">file_exists(path)<a href="#file_exists" class="anchor">#</a></h2>
+
+                <p>Check if a file exists at the given path.</p>
+
+                <div class="api-signature">
+                    <span class="fn-name">file_exists</span>(<span class="param">path</span>: <span
+                        class="type">string</span>) -> <span class="type">boolean</span>
+                </div>
+
+                <ul class="params-list">
+                    <li>
+                        <span class="param-name">path</span>
+                        <span class="param-type">string</span>
+                        <div class="param-desc">Path to check</div>
+                    </li>
+                </ul>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>if file_exists("config.txt") {
+    say("Config file found")
+    config <- read_file("config.txt")
+} else {
+    say("Config file not found, using defaults")
+}</code></pre>
+                </div>
+
+                <h2 id="examples">Examples<a href="#examples" class="anchor">#</a></h2>
+
+                <h3>Read and Process a File</h3>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Read file and count characters
+content <- read_file("document.txt")
+char_count <- len(content)
+say("Character count: " + str(char_count))</code></pre>
+                </div>
+
+                <h3>Save Program Output</h3>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Generate and save report
+report <- "Levython Report\n"
+report <- report + "===============\n"
+report <- report + "Status: OK\n"
+report <- report + "Version: 1.0\n"
+
+write_file("report.txt", report)
+say("Report saved to report.txt")</code></pre>
+                </div>
+
+                <h3>Safe File Reading</h3>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>act read_safe(path) {
+    if file_exists(path) {
+        -> read_file(path)
+    }
+    -> ""
+}
+
+data <- read_safe("optional.txt")
+if len(data) > 0 {
+    say("File content: " + data)
+} else {
+    say("File is empty or doesn't exist")
+}</code></pre>
+                </div>
+
+                <footer class="footer">
+                    <p><strong>Levython 1.0.0</strong> · <a href="https://github.com/levython/Levython">GitHub</a> · <a
+                            href="https://github.com/levython/Levython/blob/main/LICENSE">MIT License</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

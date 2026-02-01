@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Levython VS Code Extension">
+    <title>VS Code Extension | Levython v1.0 Documentation</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <div class="sidebar-logo-icon">L</div>
+                <span>Levython</span>
+            </a>
+            <div class="sidebar-version">v1.0.0 Documentation</div>
+        </div>
+
+        <div class="sidebar-search">
+            <input type="text" placeholder="Search docs..." aria-label="Search">
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">Introduction</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Index</a></li>
+                    <li><a href="about.html">About this documentation</a></li>
+                    <li><a href="synopsis.html">Usage and examples</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Getting Started</div>
+                <ul class="nav-links">
+                    <li><a href="installation.html">Installation</a></li>
+                    <li><a href="quickstart.html">Quick Start</a></li>
+                    <li><a href="vscode.html" class="active">VS Code Extension</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Language Reference</div>
+                <ul class="nav-links">
+                    <li><a href="variables.html">Variables</a></li>
+                    <li><a href="functions.html">Functions</a></li>
+                    <li><a href="control-flow.html">Control Flow</a></li>
+                    <li><a href="loops.html">Loops</a></li>
+                    <li><a href="lists.html">Lists</a></li>
+                    <li><a href="strings.html">Strings</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Core Modules</div>
+                <ul class="nav-links">
+                    <li><a href="io.html">I/O</a></li>
+                    <li><a href="file.html">File System</a></li>
+                    <li><a href="memory.html">Memory</a></li>
+                    <li><a href="bitwise.html">Bitwise</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Advanced</div>
+                <ul class="nav-links">
+                    <li><a href="tensor.html">Tensor Operations</a></li>
+                    <li><a href="simd.html">SIMD</a></li>
+                    <li><a href="performance.html">Performance</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Tools</div>
+                <ul class="nav-links">
+                    <li><a href="cli.html">Command Line</a></li>
+                    <li><a href="lpm.html">Package Manager (LPM)</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <div class="layout">
+        <main class="main">
+            <header class="header">
+                <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+                <nav class="header-nav">
+                    <div class="breadcrumb">
+                        <a href="index.html">Levython</a> /
+                        <span>VS Code Extension</span>
+                    </div>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+                    <a href="https://github.com/levython/Levython" class="github-link" target="_blank">GitHub</a>
+                </div>
+            </header>
+
+            <div class="content">
+                <h1>VS Code Extension</h1>
+
+                <div class="stability stability-2">
+                    <span class="stability-badge">Stable</span>
+                    <span>VS Code extension is available and stable.</span>
+                </div>
+
+                <p>The official Levython VS Code extension provides syntax highlighting, code snippets, and language support for enhanced development experience.</p>
+
+                <div class="toc">
+                    <div class="toc-title">Table of Contents</div>
+                    <ul class="toc-list">
+                        <li><a href="#installation">Installation</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#snippets">Code Snippets</a></li>
+                        <li><a href="#manual">Manual Installation</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="installation">Installation<a href="#installation" class="anchor">#</a></h2>
+
+                <p>The Levython extension is located in the <code>vscode-levython</code> directory of the Levython repository.</p>
+
+                <h3>Method 1: Install from VSIX</h3>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>terminal</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Navigate to extension directory
+cd vscode-levython
+
+# Package the extension
+vsce package
+
+# Install the generated .vsix file
+code --install-extension levython-*.vsix</code></pre>
+                </div>
+
+                <h3>Method 2: VS Code Marketplace</h3>
+                <p>Coming soon! The extension will be published to the VS Code Marketplace.</p>
+
+                <h2 id="features">Features<a href="#features" class="anchor">#</a></h2>
+
+                <h3>Syntax Highlighting</h3>
+                <p>Full syntax highlighting for Levython code including:</p>
+                <ul>
+                    <li><strong>Keywords:</strong> act, if, else, elif, for, while, in, range, break, continue</li>
+                    <li><strong>Operators:</strong> &lt;-, ->, ==, !=, &lt;=, &gt;=, and, or, not</li>
+                    <li><strong>Built-in Functions:</strong> say, ask, str, int, len, append, range, etc.</li>
+                    <li><strong>Literals:</strong> Numbers, strings, booleans, null</li>
+                    <li><strong>Comments:</strong> Single-line comments with #</li>
+                </ul>
+
+                <h3>File Extensions</h3>
+                <p>The extension recognizes:</p>
+                <ul>
+                    <li><code>.levy</code> - Full Levython file extension</li>
+                    <li><code>.ly</code> - Short Levython file extension</li>
+                </ul>
+
+                <h2 id="snippets">Code Snippets<a href="#snippets" class="anchor">#</a></h2>
+
+                <p>The extension includes helpful code snippets. Type the prefix and press Tab to expand:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Prefix</th>
+                            <th>Description</th>
+                            <th>Expands To</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>act</code></td>
+                            <td>Function definition</td>
+                            <td><code>act name() { }</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>if</code></td>
+                            <td>If statement</td>
+                            <td><code>if condition { }</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>for</code></td>
+                            <td>For loop</td>
+                            <td><code>for i in range() { }</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>while</code></td>
+                            <td>While loop</td>
+                            <td><code>while condition { }</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>say</code></td>
+                            <td>Print statement</td>
+                            <td><code>say("")</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2 id="manual">Manual Installation<a href="#manual" class="anchor">#</a></h2>
+
+                <p>To manually install the extension without packaging:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>terminal</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># On macOS/Linux
+ln -s "$(pwd)/vscode-levython" ~/.vscode/extensions/levython
+
+# On Windows (PowerShell)
+cmd /c mklink /D "%USERPROFILE%\.vscode\extensions\levython" "$(pwd)\vscode-levython"
+
+# Reload VS Code
+# Press Cmd+Shift+P (or Ctrl+Shift+P) and run "Developer: Reload Window"</code></pre>
+                </div>
+
+                <h3>Extension Files</h3>
+
+                <p>The extension includes:</p>
+                <ul>
+                    <li><strong>package.json:</strong> Extension metadata and configuration</li>
+                    <li><strong>syntaxes/levython.tmLanguage.json:</strong> TextMate grammar for syntax highlighting</li>
+                    <li><strong>language-configuration.json:</strong> Language-specific settings (brackets, comments)</li>
+                    <li><strong>snippets/levython.json:</strong> Code snippet definitions</li>
+                </ul>
+
+                <div class="alert alert-info">
+                    <strong>Tip:</strong> After installation, restart VS Code and open any <code>.levy</code> or <code>.ly</code> file to see syntax highlighting in action!
+                </div>
+
+                <footer class="footer">
+                    <p><strong>Levython 1.0.0</strong> · <a href="https://github.com/levython/Levython">GitHub</a> · <a
+                            href="https://github.com/levython/Levython/blob/main/LICENSE">MIT License</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

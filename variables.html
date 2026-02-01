@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Levython Variables - Data types and assignment syntax">
+    <title>Variables | Levython v1.0 Documentation</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="logo.png" alt="Levython" class="sidebar-logo-img">
+                <span>Levython</span>
+            </a>
+            <div class="sidebar-version">v1.0.0 Documentation</div>
+        </div>
+
+        <div class="sidebar-search">
+            <input type="text" placeholder="Search docs..." aria-label="Search documentation">
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">Introduction</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Index</a></li>
+                    <li><a href="about.html">About this documentation</a></li>
+                    <li><a href="synopsis.html">Usage and examples</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Getting Started</div>
+                <ul class="nav-links">
+                    <li><a href="installation.html">Installation</a></li>
+                    <li><a href="quickstart.html">Quick Start</a></li>
+                    <li><a href="vscode.html">VS Code Extension</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Language Reference</div>
+                <ul class="nav-links">
+                    <li><a href="variables.html" class="active">Variables</a></li>
+                    <li><a href="functions.html">Functions</a></li>
+                    <li><a href="control-flow.html">Control Flow</a></li>
+                    <li><a href="loops.html">Loops</a></li>
+                    <li><a href="lists.html">Lists</a></li>
+                    <li><a href="strings.html">Strings</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Core Modules</div>
+                <ul class="nav-links">
+                    <li><a href="io.html">I/O</a></li>
+                    <li><a href="file.html">File System</a></li>
+                    <li><a href="memory.html">Memory</a></li>
+                    <li><a href="bitwise.html">Bitwise</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Advanced</div>
+                <ul class="nav-links">
+                    <li><a href="performance.html">Performance</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Tools</div>
+                <ul class="nav-links">
+                    <li><a href="cli.html">Command Line</a></li>
+                    <li><a href="lpm.html">Package Manager</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <div class="layout">
+        <main class="main">
+            <header class="header">
+                <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+                <nav class="header-nav">
+                    <div class="breadcrumb">
+                        <a href="index.html">Levython</a> /
+                        <span>Variables</span>
+                    </div>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+                    <a href="https://github.com/levython/Levython" class="github-link" target="_blank">GitHub</a>
+                </div>
+            </header>
+
+            <div class="content">
+                <h1>Variables</h1>
+
+                <div class="stability stability-2">
+                    <span class="stability-badge">Stable</span>
+                    <span>Variable syntax and data types are stable in Levython 1.0.</span>
+                </div>
+
+                <p>Levython uses the <code>&lt;-</code> operator for variable assignment, providing clear visual
+                    distinction between assignment and comparison operations.</p>
+
+                <div class="toc">
+                    <div class="toc-title">Table of Contents</div>
+                    <ul class="toc-list">
+                        <li><a href="#assignment">Assignment Syntax</a></li>
+                        <li><a href="#data-types">Data Types</a></li>
+                        <li><a href="#strings">Strings</a></li>
+                        <li><a href="#numbers">Numbers</a></li>
+                        <li><a href="#booleans">Booleans</a></li>
+                        <li><a href="#lists">Lists</a></li>
+                        <li><a href="#null">Null</a></li>
+                        <li><a href="#type-conversion">Type Conversion</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="assignment">Assignment Syntax<a href="#assignment" class="anchor">#</a></h2>
+
+                <p>Levython uses the <code>&lt;-</code> (left arrow) operator for variable assignment. This distinctive 
+                    syntax provides visual clarity by showing the direction of data flow and eliminates confusion between 
+                    assignment and equality comparison.</p>
+
+                <div class="api-signature">
+                    <span class="param">variable_name</span> <span class="operator">&lt;-</span> <span
+                        class="type">expression</span>
+                </div>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Variable assignment
+name <- "Levython"
+version <- 1.0
+is_fast <- true
+
+# Variables are dynamically typed
+x <- 42        # x is a number
+x <- "text"    # x is now a string (reassignment)
+
+# Reassignment and mutation
+counter <- 0
+counter <- counter + 1
+counter <- counter + 1
+
+say(name)           # Output: Levython
+say(str(version))   # Output: 1.0
+say(str(counter))   # Output: 2</code></pre>
+                </div>
+
+                <h3>Variable Naming Rules</h3>
+                <ul>
+                    <li>Must start with a letter (a-z, A-Z) or underscore (_)</li>
+                    <li>Can contain letters, digits (0-9), and underscores</li>
+                    <li>Case-sensitive: <code>myVar</code> and <code>myvar</code> are different</li>
+                    <li>Cannot use reserved keywords (act, if, for, while, etc.)</li>
+                </ul>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Valid variable names
+user_name <- "Alice"
+total_count <- 100
+_private <- "hidden"
+MAX_SIZE <- 1000
+
+# Invalid variable names (will cause errors)
+# 123abc <- "nope"      # Cannot start with digit
+# my-var <- "nope"      # Cannot contain hyphens
+# if <- "nope"          # Cannot use keywords</code></pre>
+                </div>
+
+                <h3>Compound Assignment Operators</h3>
+                <p>Levython supports compound assignment operators for convenience:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Compound assignment operators
+x <- 10
+x <- x + 5    # Standard form
+x += 5        # Compound form (equivalent)
+
+# Available operators
+counter <- 0
+counter += 1   # Addition: counter = counter + 1
+counter -= 1   # Subtraction: counter = counter - 1
+counter *= 2   # Multiplication: counter = counter * 2
+counter /= 2   # Division: counter = counter / 2</code></pre>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>Design Rationale:</strong> The <code>&lt;-</code> arrow operator was chosen for several reasons:
+                    <ul>
+                        <li><strong>Visual Clarity:</strong> Shows data flowing from right (value) to left (variable)</li>
+                        <li><strong>No Confusion:</strong> Eliminates mix-ups between assignment (<code>&lt;-</code>) and comparison (<code>==</code>)</li>
+                        <li><strong>Consistency:</strong> Pairs with return operator (<code>-&gt;</code>) which shows data flowing out</li>
+                        <li><strong>Readability:</strong> Makes variable assignments stand out in code</li>
+                    </ul>
+                </div>
+
+                <h2 id="data-types">Data Types<a href="#data-types" class="anchor">#</a></h2>
+
+                <p>Levython supports the following data types:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>string</code></td>
+                            <td>Text data</td>
+                            <td><code>"Hello"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>number</code></td>
+                            <td>Integer or float</td>
+                            <td><code>42</code>, <code>3.14</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>boolean</code></td>
+                            <td>True or false</td>
+                            <td><code>true</code>, <code>false</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>list</code></td>
+                            <td>Ordered collection</td>
+                            <td><code>[1, 2, 3]</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>null</code></td>
+                            <td>No value</td>
+                            <td><code>null</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2 id="strings">Strings<a href="#strings" class="anchor">#</a></h2>
+
+                <p>Strings are sequences of characters enclosed in double quotes:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># String literals
+greeting <- "Hello, World!"
+empty <- ""
+
+# String concatenation
+first <- "Levy"
+last <- "thon"
+full <- first + last
+say(full)  # Output: Levython
+
+# String length
+say(str(len(greeting)))  # Output: 13</code></pre>
+                </div>
+
+                <h2 id="numbers">Numbers<a href="#numbers" class="anchor">#</a></h2>
+
+                <p>Levython supports both integers and floating-point numbers (doubles) with automatic type handling. 
+                    All numeric values are internally represented using NaN-boxing for efficient 8-byte storage.</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Integer literals
+count <- 42
+negative <- -10
+large <- 1000000
+
+# Floating-point literals
+pi <- 3.14159
+temperature <- -40.5
+scientific <- 1.5e-10
+
+# Arithmetic operations
+sum <- 10 + 5        # Addition: 15
+diff <- 10 - 5       # Subtraction: 5
+product <- 10 * 5    # Multiplication: 50
+quotient <- 10 / 5   # Division: 2.0
+remainder <- 10 % 3  # Modulo: 1
+power <- 2 ** 8      # Exponentiation: 256
+
+say(str(sum))      # Output: 15
+say(str(product))  # Output: 50
+say(str(power))    # Output: 256</code></pre>
+                </div>
+
+                <h3>Operator Precedence</h3>
+                <p>Levython follows standard mathematical precedence rules:</p>
+                <ol>
+                    <li><code>**</code> (Exponentiation) - highest precedence</li>
+                    <li><code>*</code>, <code>/</code>, <code>%</code> (Multiplication, Division, Modulo)</li>
+                    <li><code>+</code>, <code>-</code> (Addition, Subtraction) - lowest precedence</li>
+                </ol>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Precedence examples
+result <- 2 + 3 * 4     # 14 (not 20)
+result <- (2 + 3) * 4   # 20 (parentheses override)
+result <- 2 ** 3 ** 2   # 512 (right-associative)
+result <- 10 / 2 * 3    # 15 (left-to-right)</code></pre>
+                </div>
+
+                <h3>Type Conversion</h3>
+                <p>Convert between numeric types and strings:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># String to number
+text <- "42"
+num <- int(text)      # 42 (integer)
+num <- float(text)    # 42.0 (float)
+
+# Number to string
+value <- 123
+text <- str(value)    # "123"
+
+# For display (str() is required)
+x <- 100
+say("Value: " + str(x))  # Correct
+# say("Value: " + x)      # Error: cannot concatenate number</code></pre>
+                </div>
+
+                <h3>Special Numeric Values</h3>
+                <p>Levython handles special IEEE 754 floating-point values:</p>
+                <ul>
+                    <li><strong>Infinity:</strong> Result of overflow (e.g., <code>1.0 / 0.0</code>)</li>
+                    <li><strong>NaN (Not a Number):</strong> Result of undefined operations (e.g., <code>0.0 / 0.0</code>)</li>
+                </ul>
+
+                <div class="alert alert-info">
+                    <strong>Performance Note:</strong> Integer operations are optimized for the common case where 
+                    values fit in 48 bits (±140 trillion range). Larger integers and all floating-point operations 
+                    use native x86-64 FPU instructions for maximum speed.
+                </div>
+
+                <h2 id="booleans">Booleans<a href="#booleans" class="anchor">#</a></h2>
+
+                <p>Boolean values represent true or false:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Boolean literals
+is_active <- true
+is_complete <- false
+
+# Comparison results
+x <- 10
+is_greater <- x > 5      # true
+is_equal <- x == 10      # true
+is_not_equal <- x != 5   # true
+
+if is_active {
+    say("Active!")
+}</code></pre>
+                </div>
+
+                <h2 id="lists">Lists<a href="#lists" class="anchor">#</a></h2>
+
+                <p>Lists are ordered, mutable collections:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># List creation
+numbers <- [1, 2, 3, 4, 5]
+mixed <- ["hello", 42, true]
+empty_list <- []
+
+# Accessing elements (0-indexed)
+first <- numbers[0]    # 1
+second <- numbers[1]   # 2
+
+# Adding elements
+append(numbers, 6)
+
+# List length
+say(str(len(numbers)))  # Output: 6</code></pre>
+                </div>
+
+                <p>See <a href="lists.html">Lists</a> for more details.</p>
+
+                <h2 id="null">Null<a href="#null" class="anchor">#</a></h2>
+
+                <p>The <code>null</code> value represents the absence of a value:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>value <- null
+
+if value == null {
+    say("No value set")
+}</code></pre>
+                </div>
+
+                <h2 id="type-conversion">Type Conversion<a href="#type-conversion" class="anchor">#</a></h2>
+
+                <p>Levython provides built-in functions for converting between different data types:</p>
+
+                <h3>Available Conversion Functions</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Function</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>str(value)</code></td>
+                            <td>Convert to string</td>
+                            <td><code>str(42)</code></td>
+                            <td><code>"42"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>int(value)</code></td>
+                            <td>Convert to integer</td>
+                            <td><code>int("42")</code></td>
+                            <td><code>42</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>float(value)</code></td>
+                            <td>Convert to float</td>
+                            <td><code>float("3.14")</code></td>
+                            <td><code>3.14</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>type(value)</code></td>
+                            <td>Get type name</td>
+                            <td><code>type(42)</code></td>
+                            <td><code>"integer"</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># String conversion (required for output)
+number <- 42
+boolean <- true
+list <- [1, 2, 3]
+
+say("Number: " + str(number))   # Number: 42
+say("Boolean: " + str(boolean)) # Boolean: true
+say("List: " + str(list))       # List: [1, 2, 3]
+
+# Numeric conversion
+text <- "123"
+num <- int(text)        # 123
+decimal <- float(text)  # 123.0
+
+# Type checking
+value <- 42
+say("Type: " + type(value))  # Type: integer
+
+# Conversion in expressions
+user_input <- "10"
+doubled <- int(user_input) * 2
+say("Result: " + str(doubled))  # Result: 20</code></pre>
+                </div>
+
+                <h3>Type Introspection</h3>
+                <p>Use the <code>type()</code> function to inspect value types at runtime:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>say(type(42))        # "integer"
+say(type(3.14))      # "float"
+say(type("hello"))   # "string"
+say(type(true))      # "boolean"
+say(type([1, 2]))    # "list"
+say(type(null))      # "null"</code></pre>
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>Important:</strong> The <code>str()</code> function must be used when concatenating 
+                    non-string values with strings. Attempting to concatenate without conversion will result in a 
+                    runtime type error.
+                </div>
+
+                <h3>Common Patterns</h3>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Pattern: User input conversion
+age_str <- ask("Enter your age: ")
+age <- int(age_str)
+
+if age >= 18 {
+    say("You are an adult")
+} else {
+    say("You are " + str(18 - age) + " years away from adulthood")
+}
+
+# Pattern: Numeric calculations
+price_str <- "29.99"
+quantity_str <- "3"
+total <- float(price_str) * int(quantity_str)
+say("Total: $" + str(total))  # Total: $89.97
+
+# Pattern: Dynamic type handling
+values <- [42, "hello", 3.14, true]
+for val in values {
+    say("Value: " + str(val) + ", Type: " + type(val))
+}
+# Output:
+# Value: 42, Type: integer
+# Value: hello, Type: string
+# Value: 3.14, Type: float
+# Value: true, Type: boolean</code></pre>
+                </div>
+
+                <footer class="footer">
+                    <p><strong>Levython 1.0.0</strong> · <a href="https://github.com/levython/Levython">GitHub</a> · <a
+                            href="https://github.com/levython/Levython/blob/main/LICENSE">MIT License</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Management | Levython Documentation</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="sidebar-overlay"></div>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="logo.png" alt="Levython" class="sidebar-logo-img">
+                <span>Levython</span>
+            </a>
+            <div class="sidebar-version">v1.0.0 Documentation</div>
+        </div>
+
+        <div class="sidebar-search">
+            <input type="text" placeholder="Search docs..." aria-label="Search documentation">
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">Introduction</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Index</a></li>
+                    <li><a href="about.html">About this documentation</a></li>
+                    <li><a href="synopsis.html">Usage and examples</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Getting Started</div>
+                <ul class="nav-links">
+                    <li><a href="installation.html">Installation</a></li>
+                    <li><a href="quickstart.html">Quick Start</a></li>
+                    <li><a href="vscode.html">VS Code Extension</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Language Reference</div>
+                <ul class="nav-links">
+                    <li><a href="variables.html">Variables</a></li>
+                    <li><a href="functions.html">Functions</a></li>
+                    <li><a href="control-flow.html">Control Flow</a></li>
+                    <li><a href="loops.html">Loops</a></li>
+                    <li><a href="lists.html">Lists</a></li>
+                    <li><a href="strings.html">Strings</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Core Modules</div>
+                <ul class="nav-links">
+                    <li><a href="io.html">I/O</a></li>
+                    <li><a href="file.html">File System</a></li>
+                    <li><a href="memory.html" class="active">Memory</a></li>
+                    <li><a href="bitwise.html">Bitwise</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Advanced</div>
+                <ul class="nav-links">
+                    <li><a href="performance.html">Performance</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Tools</div>
+                <ul class="nav-links">
+                    <li><a href="cli.html">Command Line</a></li>
+                    <li><a href="lpm.html">Package Manager</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+    <div class="layout">
+        <main class="main">
+            <div class="content">
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span>Memory Management</span>
+                </div>
+
+                <h1>Memory Management</h1>
+                <p>Levython uses automatic memory management with garbage collection and NaN-boxing for efficient value representation.</p>
+
+                <h2>NaN-Boxing</h2>
+                <p>All values in Levython are stored as 64-bit NaN-boxed values:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Representation</th>
+                            <th>Range</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Float</td>
+                            <td>IEEE 754 double</td>
+                            <td>Full double precision</td>
+                        </tr>
+                        <tr>
+                            <td>Integer</td>
+                            <td>53-bit signed int</td>
+                            <td>-2^53 to 2^53</td>
+                        </tr>
+                        <tr>
+                            <td>Boolean</td>
+                            <td>Special NaN pattern</td>
+                            <td>true/false</td>
+                        </tr>
+                        <tr>
+                            <td>Pointer</td>
+                            <td>48-bit pointer in NaN</td>
+                            <td>Heap objects</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Memory Layout</h3>
+                <div class="code-block">
+                    <pre><code># Integers - no heap allocation
+x <- 42              # 8 bytes on stack
+
+# Strings - heap allocated
+name <- "Alice"      # 8 bytes (pointer) + string data on heap
+
+# Lists - heap allocated with capacity
+items <- [1, 2, 3]   # 8 bytes (pointer) + 24 bytes header + 24 bytes data</code></pre>
+                </div>
+
+                <h2>Garbage Collection</h2>
+                <p>Levython uses mark-and-sweep garbage collection:</p>
+
+                <h3>GC Phases</h3>
+                <ol>
+                    <li><strong>Mark:</strong> Trace from roots and mark reachable objects</li>
+                    <li><strong>Sweep:</strong> Free unmarked objects</li>
+                    <li><strong>Compact:</strong> Optional heap defragmentation</li>
+                </ol>
+
+                <h3>When GC Runs</h3>
+                <ul>
+                    <li>When heap usage exceeds threshold (default: 8MB)</li>
+                    <li>After allocating large objects (>1MB)</li>
+                    <li>Manually via <code>gc()</code> function</li>
+                </ul>
+
+                <div class="code-block">
+                    <pre><code># Create temporary objects
+for i in range(0, 1000) do
+    temp <- [i] * 1000  # Large temporary list
+end
+
+# GC automatically runs and frees unused memory</code></pre>
+                </div>
+
+                <h2>Memory-Efficient Patterns</h2>
+
+                <h3>Reuse Objects</h3>
+                <div class="code-block">
+                    <pre><code># Bad - creates new list each iteration
+for i in range(0, 1000) do
+    data <- []
+    for j in range(0, 100) do
+        append(data, j)
+    end
+    process(data)
+end
+
+# Good - reuse same list
+data <- []
+for i in range(0, 1000) do
+    clear(data)  # Clear instead of creating new
+    for j in range(0, 100) do
+        append(data, j)
+    end
+    process(data)
+end</code></pre>
+                </div>
+
+                <h3>Avoid Intermediate Lists</h3>
+                <div class="code-block">
+                    <pre><code># Bad - creates intermediate lists
+numbers <- range(0, 1000)
+evens <- [x for x in numbers if x % 2 == 0]
+doubled <- [x * 2 for x in evens]
+
+# Good - single pass
+doubled_evens <- [x * 2 for x in range(0, 1000) if x % 2 == 0]</code></pre>
+                </div>
+
+                <h3>Use Generators (Coming Soon)</h3>
+                <div class="code-block">
+                    <pre><code># Future feature: generators for lazy evaluation
+# gen fibonacci()
+#     a <- 0
+#     b <- 1
+#     while true do
+#         yield a
+#         temp <- a
+#         a <- b
+#         b <- temp + b
+#     end
+# end</code></pre>
+                </div>
+
+                <h2>Memory Profiling</h2>
+
+                <h3>Check Memory Usage</h3>
+                <div class="code-block">
+                    <pre><code># Get current memory usage
+before <- memory()
+say("Memory before: " + str(before) + " bytes")
+
+# Create some data
+big_list <- [0] * 1000000
+
+after <- memory()
+say("Memory after: " + str(after) + " bytes")
+say("Allocated: " + str(after - before) + " bytes")</code></pre>
+                </div>
+
+                <h3>Force Garbage Collection</h3>
+                <div class="code-block">
+                    <pre><code># Create temporary objects
+temp <- [0] * 10000000  # 80MB list
+temp <- null            # Release reference
+
+# Force GC to reclaim memory
+gc()
+
+say("Memory freed")</code></pre>
+                </div>
+
+                <h2>Object Sizes</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Object Type</th>
+                            <th>Base Size</th>
+                            <th>Per Element</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Integer</td>
+                            <td>0 bytes</td>
+                            <td>NaN-boxed inline</td>
+                        </tr>
+                        <tr>
+                            <td>Float</td>
+                            <td>0 bytes</td>
+                            <td>NaN-boxed inline</td>
+                        </tr>
+                        <tr>
+                            <td>Boolean</td>
+                            <td>0 bytes</td>
+                            <td>NaN-boxed inline</td>
+                        </tr>
+                        <tr>
+                            <td>String</td>
+                            <td>24 bytes</td>
+                            <td>1 byte per char</td>
+                        </tr>
+                        <tr>
+                            <td>List</td>
+                            <td>24 bytes</td>
+                            <td>8 bytes per element</td>
+                        </tr>
+                        <tr>
+                            <td>Function</td>
+                            <td>48 bytes</td>
+                            <td>+ bytecode size</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Memory Leaks Prevention</h2>
+
+                <h3>Common Pitfalls</h3>
+                <div class="code-block">
+                    <pre><code># Bad - growing list never shrinks
+cache <- []
+while running do
+    data <- fetch_data()
+    append(cache, data)  # Cache grows indefinitely
+end
+
+# Good - limit cache size
+cache <- []
+max_size <- 1000
+while running do
+    data <- fetch_data()
+    append(cache, data)
+    if len(cache) > max_size then
+        remove(cache, 0)  # Remove oldest entry
+    end
+end</code></pre>
+                </div>
+
+                <h3>Circular References</h3>
+                <p>Levython's GC handles circular references automatically:</p>
+                <div class="code-block">
+                    <pre><code># Circular reference - automatically handled
+node1 <- {"value": 1, "next": null}
+node2 <- {"value": 2, "next": null}
+node1["next"] <- node2
+node2["next"] <- node1  # Circular
+
+# When node1 and node2 go out of scope, GC frees both</code></pre>
+                </div>
+
+                <h2>Best Practices</h2>
+                <ul>
+                    <li>✅ Reuse objects instead of creating new ones in loops</li>
+                    <li>✅ Limit collection sizes (implement bounded caches)</li>
+                    <li>✅ Clear references when done (<code>obj <- null</code>)</li>
+                    <li>✅ Prefer list comprehensions over manual building</li>
+                    <li>✅ Use <code>gc()</code> after large deallocations</li>
+                    <li>✅ Profile memory usage with <code>memory()</code></li>
+                    <li>❌ Don't keep references to large temporary objects</li>
+                    <li>❌ Don't create unbounded caches without eviction</li>
+                    <li>❌ Don't ignore memory growth in long-running processes</li>
+                </ul>
+
+                <footer class="footer">
+                    <p>© 2024 Levython. Released under the MIT License.</p>
+                    <p><a href="https://github.com/Levython/Levython">GitHub</a> · <a href="about.html">About</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

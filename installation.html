@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Install Levython - High-performance programming language">
+    <title>Installation | Levython v1.0 Documentation</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="logo.png" alt="Levython" class="sidebar-logo-img">
+                <span>Levython</span>
+            </a>
+            <div class="sidebar-version">v1.0.0 Documentation</div>
+        </div>
+
+        <div class="sidebar-search">
+            <input type="text" placeholder="Search docs..." aria-label="Search documentation">
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">Introduction</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Index</a></li>
+                    <li><a href="about.html">About this documentation</a></li>
+                    <li><a href="synopsis.html">Usage and examples</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Getting Started</div>
+                <ul class="nav-links">
+                    <li><a href="installation.html" class="active">Installation</a></li>
+                    <li><a href="quickstart.html">Quick Start</a></li>
+                    <li><a href="vscode.html">VS Code Extension</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Language Reference</div>
+                <ul class="nav-links">
+                    <li><a href="variables.html">Variables</a></li>
+                    <li><a href="functions.html">Functions</a></li>
+                    <li><a href="control-flow.html">Control Flow</a></li>
+                    <li><a href="loops.html">Loops</a></li>
+                    <li><a href="lists.html">Lists</a></li>
+                    <li><a href="strings.html">Strings</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Core Modules</div>
+                <ul class="nav-links">
+                    <li><a href="io.html">I/O</a></li>
+                    <li><a href="file.html">File System</a></li>
+                    <li><a href="memory.html">Memory</a></li>
+                    <li><a href="bitwise.html">Bitwise</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Advanced</div>
+                <ul class="nav-links">
+                    <li><a href="performance.html">Performance</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Tools</div>
+                <ul class="nav-links">
+                    <li><a href="cli.html">Command Line</a></li>
+                    <li><a href="lpm.html">Package Manager</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <div class="layout">
+        <main class="main">
+            <header class="header">
+                <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+                <nav class="header-nav">
+                    <div class="breadcrumb">
+                        <a href="index.html">Levython</a> /
+                        <span>Installation</span>
+                    </div>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+                    <a href="https://github.com/levython/Levython" class="github-link" target="_blank">GitHub</a>
+                </div>
+            </header>
+
+            <div class="content">
+                <h1>Installation</h1>
+
+                <div class="stability stability-2">
+                    <span class="stability-badge">Stable</span>
+                    <span>The installation process is stable across macOS, Linux, and Windows WSL.</span>
+                </div>
+
+                <div class="toc">
+                    <div class="toc-title">Table of Contents</div>
+                    <ul class="toc-list">
+                        <li><a href="#quick-install">Quick Install</a></li>
+                        <li><a href="#manual-install">Manual Install</a></li>
+                        <li><a href="#what-gets-installed">What Gets Installed</a></li>
+                        <li><a href="#post-install">Post Installation</a></li>
+                        <li><a href="#verify">Verify Installation</a></li>
+                        <li><a href="#uninstall">Uninstallation</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="quick-install">Quick Install (Recommended)<a href="#quick-install" class="anchor">#</a></h2>
+                <p>The fastest way to install Levython is with the one-line installer:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span></span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>curl -fsSL https://raw.githubusercontent.com/levython/levython/main/install.sh | bash</code></pre>
+                </div>
+
+                <p>The installer automatically:</p>
+                <ul>
+                    <li>Detects your operating system (macOS, Linux, Windows WSL)</li>
+                    <li>Downloads and compiles Levython with optimal flags</li>
+                    <li>Installs to <code>~/.levython/bin</code></li>
+                    <li>Adds Levython to your PATH</li>
+                    <li>Installs the LPM package manager</li>
+                </ul>
+
+                <h2 id="manual-install">Manual Installation<a href="#manual-install" class="anchor">#</a></h2>
+                <p>For more control over the installation process:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span></span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>git clone https://github.com/levython/Levython.git
+cd Levython
+chmod +x install.sh
+./install.sh</code></pre>
+                </div>
+
+                <h2 id="what-gets-installed">What Gets Installed<a href="#what-gets-installed" class="anchor">#</a></h2>
+                <p>The installer creates the following structure:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span></span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>~/.levython/
+├── bin/
+│   ├── levython    # Main interpreter with JIT
+│   └── lpm         # Package manager
+└── packages/       # Installed packages</code></pre>
+                </div>
+
+                <h3>System Requirements</h3>
+                <ul>
+                    <li><strong>macOS:</strong> 10.15+ (Catalina or later)</li>
+                    <li><strong>Linux:</strong> Any modern distribution with GCC</li>
+                    <li><strong>Windows:</strong> WSL (Windows Subsystem for Linux)</li>
+                </ul>
+
+                <h2 id="post-install">Post Installation<a href="#post-install" class="anchor">#</a></h2>
+                <p>After installation, restart your terminal or source your shell configuration:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <div class="code-tabs">
+                            <button class="code-tab active" data-tab="zsh">zsh</button>
+                            <button class="code-tab" data-tab="bash">bash</button>
+                        </div>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre data-content="zsh"><code>source ~/.zshrc</code></pre>
+                    <pre data-content="bash" style="display:none"><code>source ~/.bashrc</code></pre>
+                </div>
+
+                <h2 id="verify">Verify Installation<a href="#verify" class="anchor">#</a></h2>
+                <p>Check that Levython is correctly installed:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span></span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>levython --version
+# Output: Levython 1.0.0</code></pre>
+                </div>
+
+                <p>Run a quick test:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span></span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>echo 'say("Hello from Levython!")' | levython -
+# Output: Hello from Levython!</code></pre>
+                </div>
+
+                <h2 id="uninstall">Uninstallation<a href="#uninstall" class="anchor">#</a></h2>
+                <p>To completely remove Levython:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span></span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>rm -rf ~/.levython</code></pre>
+                </div>
+
+                <p>Then remove the PATH entry from your shell configuration file (<code>~/.zshrc</code> or
+                    <code>~/.bashrc</code>).</p>
+
+                <div class="alert alert-info">
+                    <strong>Next Steps:</strong> Now that Levython is installed, check out the <a
+                        href="quickstart.html">Quick Start</a> guide to write your first program.
+                </div>
+
+                <footer class="footer">
+                    <p><strong>Levython 1.0.0</strong> · <a href="https://github.com/levython/Levython">GitHub</a> · <a
+                            href="https://github.com/levython/Levython/blob/main/LICENSE">MIT License</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

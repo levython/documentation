@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Levython Strings - String operations and manipulation">
+    <title>Strings | Levython v1.0 Documentation</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="logo.png" alt="Levython" class="sidebar-logo-img">
+                <span>Levython</span>
+            </a>
+            <div class="sidebar-version">v1.0.0 Documentation</div>
+        </div>
+
+        <div class="sidebar-search">
+            <input type="text" placeholder="Search docs..." aria-label="Search documentation">
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">Introduction</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Index</a></li>
+                    <li><a href="about.html">About this documentation</a></li>
+                    <li><a href="synopsis.html">Usage and examples</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Getting Started</div>
+                <ul class="nav-links">
+                    <li><a href="installation.html">Installation</a></li>
+                    <li><a href="quickstart.html">Quick Start</a></li>
+                    <li><a href="vscode.html">VS Code Extension</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Language Reference</div>
+                <ul class="nav-links">
+                    <li><a href="variables.html">Variables</a></li>
+                    <li><a href="functions.html">Functions</a></li>
+                    <li><a href="control-flow.html">Control Flow</a></li>
+                    <li><a href="loops.html">Loops</a></li>
+                    <li><a href="lists.html">Lists</a></li>
+                    <li><a href="strings.html" class="active">Strings</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Core Modules</div>
+                <ul class="nav-links">
+                    <li><a href="io.html">I/O</a></li>
+                    <li><a href="file.html">File System</a></li>
+                    <li><a href="memory.html">Memory</a></li>
+                    <li><a href="bitwise.html">Bitwise</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Advanced</div>
+                <ul class="nav-links">
+                    <li><a href="performance.html">Performance</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Tools</div>
+                <ul class="nav-links">
+                    <li><a href="cli.html">Command Line</a></li>
+                    <li><a href="lpm.html">Package Manager</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <div class="layout">
+        <main class="main">
+            <header class="header">
+                <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+                <nav class="header-nav">
+                    <div class="breadcrumb">
+                        <a href="index.html">Levython</a> /
+                        <span>Strings</span>
+                    </div>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+                    <a href="https://github.com/levython/Levython" class="github-link" target="_blank">GitHub</a>
+                </div>
+            </header>
+
+            <div class="content">
+                <h1>Strings</h1>
+
+                <div class="stability stability-2">
+                    <span class="stability-badge">Stable</span>
+                    <span>String operations are stable in Levython 1.0.</span>
+                </div>
+
+                <p>Strings in Levython are immutable sequences of characters. They are interned for efficient storage and comparison, with all string literals sharing the same memory location if they have identical content.</p>
+
+                <div class="toc">
+                    <div class="toc-title">Table of Contents</div>
+                    <ul class="toc-list">
+                        <li><a href="#creating">Creating Strings</a></li>
+                        <li><a href="#concatenation">Concatenation</a></li>
+                        <li><a href="#functions">String Functions</a></li>
+                        <li><a href="#searching">Searching</a></li>
+                        <li><a href="#case">Case Conversion</a></li>
+                        <li><a href="#splitting">Splitting & Joining</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="creating">Creating Strings<a href="#creating" class="anchor">#</a></h2>
+
+                <p>String literals are enclosed in double quotes:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># String literals
+greeting <- "Hello, World!"
+name <- "Levython"
+empty <- ""
+
+# String length
+len_greeting <- len(greeting)
+say("Length: " + str(len_greeting))  # Length: 13
+
+# Access characters (strings are sequences)
+first_char <- greeting[0]  # "H"</code></pre>
+                </div>
+
+                <h2 id="concatenation">Concatenation<a href="#concatenation" class="anchor">#</a></h2>
+
+                <p>Use the <code>+</code> operator to concatenate strings:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>first <- "Hello"
+last <- "World"
+
+# Concatenation
+full <- first + ", " + last + "!"
+say(full)  # Hello, World!
+
+# Building strings in loops
+result <- ""
+for i in range(1, 4) {
+    result <- result + str(i) + " "
+}
+say(result)  # "1 2 3 "</code></pre>
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>Performance Note:</strong> String concatenation creates new string objects. For building long strings in loops, consider using a list and <code>join()</code> for better performance.
+                </div>
+
+                <h2 id="functions">String Functions<a href="#functions" class="anchor">#</a></h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Function</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>len(string)</code></td>
+                            <td>Get string length</td>
+                            <td><code>len("hello")</code> → 5</td>
+                        </tr>
+                        <tr>
+                            <td><code>upper(string)</code></td>
+                            <td>Convert to uppercase</td>
+                            <td><code>upper("hello")</code> → "HELLO"</td>
+                        </tr>
+                        <tr>
+                            <td><code>lower(string)</code></td>
+                            <td>Convert to lowercase</td>
+                            <td><code>lower("HELLO")</code> → "hello"</td>
+                        </tr>
+                        <tr>
+                            <td><code>trim(string)</code></td>
+                            <td>Remove whitespace</td>
+                            <td><code>trim("  hi  ")</code> → "hi"</td>
+                        </tr>
+                        <tr>
+                            <td><code>replace(str, old, new)</code></td>
+                            <td>Replace substring</td>
+                            <td><code>replace("hi hi", "hi", "bye")</code> → "bye bye"</td>
+                        </tr>
+                        <tr>
+                            <td><code>split(string, delim)</code></td>
+                            <td>Split into list</td>
+                            <td><code>split("a,b,c", ",")</code> → ["a", "b", "c"]</td>
+                        </tr>
+                        <tr>
+                            <td><code>join(list, delim)</code></td>
+                            <td>Join list to string</td>
+                            <td><code>join(["a", "b"], ",")</code> → "a,b"</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2 id="searching">Searching<a href="#searching" class="anchor">#</a></h2>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>text <- "Hello, World!"
+
+# Check if substring exists
+has_world <- contains(text, "World")
+say("Contains 'World': " + str(has_world))  # true
+
+# Find position
+pos <- find(text, "World")
+say("Position of 'World': " + str(pos))  # 7
+
+# Check prefix/suffix
+starts <- startswith(text, "Hello")
+ends <- endswith(text, "!")
+say("Starts with 'Hello': " + str(starts))  # true
+say("Ends with '!': " + str(ends))          # true</code></pre>
+                </div>
+
+                <h2 id="case">Case Conversion<a href="#case" class="anchor">#</a></h2>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code>text <- "Hello, World!"
+
+# Convert to uppercase
+upper_text <- upper(text)
+say(upper_text)  # HELLO, WORLD!
+
+# Convert to lowercase
+lower_text <- lower(text)
+say(lower_text)  # hello, world!</code></pre>
+                </div>
+
+                <h2 id="splitting">Splitting & Joining<a href="#splitting" class="anchor">#</a></h2>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Split string into list
+csv <- "apple,banana,cherry"
+fruits <- split(csv, ",")
+say(str(fruits))  # ["apple", "banana", "cherry"]
+
+# Join list into string
+words <- ["Hello", "from", "Levython"]
+sentence <- join(words, " ")
+say(sentence)  # Hello from Levython
+
+# Efficient string building
+parts <- []
+for i in range(1, 6) {
+    append(parts, str(i))
+}
+result <- join(parts, ", ")
+say(result)  # 1, 2, 3, 4, 5</code></pre>
+                </div>
+
+                <h3>Common Patterns</h3>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>levython</span>
+                        <div class="code-actions">
+                            <button class="copy-btn">COPY</button>
+                        </div>
+                    </div>
+                    <pre><code># Pattern: Clean user input
+user_input <- "  hello@example.com  "
+email <- trim(lower(user_input))
+say(email)  # hello@example.com
+
+# Pattern: Replace multiple occurrences
+text <- "The cat in the hat"
+new_text <- replace(text, "the", "a")
+say(new_text)  # a cat in a hat
+
+# Pattern: Parse CSV-like data
+data <- "John,25,Engineer"
+fields <- split(data, ",")
+name <- fields[0]
+age <- int(fields[1])
+job <- fields[2]
+say(name + " is " + str(age) + " and works as a " + job)</code></pre>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>String Interning:</strong> Levython automatically interns string literals, meaning identical strings share the same memory. This makes string comparison extremely fast (pointer comparison) and reduces memory usage.
+                </div>
+
+                <footer class="footer">
+                    <p><strong>Levython 1.0.0</strong> · <a href="https://github.com/levython/Levython">GitHub</a> · <a
+                            href="https://github.com/levython/Levython/blob/main/LICENSE">MIT License</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
